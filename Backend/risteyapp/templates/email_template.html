@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Your Account Details</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px #ccc;">
+        <h2 style="color: #07426f;">Hi {{ username }},</h2>
+        <p>Here are your login details:</p>
+
+        <table style="margin-top: 20px;">
+            <tr>
+                <td><strong>Username:</strong></td>
+                <td>{{ username }}</td>
+            </tr>
+            <tr>
+                <td><strong>Password:</strong></td>
+                <td>{{ password }}</td>
+            </tr>
+        </table>
+
+        <!-- <p style="margin-top: 20px;">If you didn’t request this email, please ignore it.</p> -->
+        <p>Thanks,<br><b>Ristey Team</b></p>
+    </div>
+</body>
+</html>
