@@ -1,0 +1,354 @@
+/* Reset/Global styles */
+
+
+/* Top Navbar */
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1000;
+}
+
+.navbar-title {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  margin-left: 30px;
+}
+
+.top-navbar-right .navbar-link {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+/* Sidebar */
+.sidebar_open {
+  /* background-color: #1976d2; */
+  width: 220px;
+  height: calc(100vh - 60px);
+  position: fixed;
+  top: 60px;
+  left: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #08b15c;
+  height: 100vh;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.sidebar-button {
+  /* background-color: #444; */
+  /* background-color: #1976d2; */
+  /* background: linear-gradient(90deg, #1976d2, #42a5f5); */
+  background: linear-gradient(90deg, #1976d2, #42a5f5);
+
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.sidebar-button:hover {
+  /* background-color: #555; */
+}
+
+/* Overall Layout */
+/* Main content remains same for desktop */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 30px;
+  margin-top: 30px;
+  background: linear-gradient(to bottom right, #f0f2f5, #e4e7eb);
+}
+
+/* Profile Section */
+.profile-section {
+  flex: 0 0 400px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  margin-top: 20px;
+  margin-left: 210px;
+}
+
+.profile-section:hover {
+  transform: translateY(-5px);
+}
+
+.profile-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #4facfe;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Styles */
+.profile-form .ant-form-item-label label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.save-button,
+.profile-button {
+  width: 120px;
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.save-button:hover,
+.profile-button:hover {
+  opacity: 0.85;
+}
+
+/* Cards Section */
+.cards-section {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: nowrap; /* no wrapping on desktop */
+}
+
+.info-card {
+  width: 250px;
+  height: 250px;
+  margin-right: 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  transform: rotate(25deg);
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+.info-card:hover::after {
+  opacity: 1;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.card-count {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Small Desktop or Tablet: Wrap cards */
+@media (max-width: 1024px) {
+  .cards-section {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .info-card {
+    width: 45%;
+    height: 220px;
+    margin-right: 0;
+  }
+
+  .card-icon {
+    font-size: 50px;
+  }
+
+  .card-count {
+    font-size: 24px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-section {
+    width: 90%;
+    margin-left: 0;
+  }
+
+  .cards-section {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .info-card {
+    width: 90%;
+    height: 220px;
+    margin-right: 0;
+  }
+
+  .card-icon {
+    font-size: 40px;
+  }
+
+  .card-count {
+    font-size: 20px;
+  }
+}
+
+
+
+/* Chart container */
+.chart-container {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Responsive layout */
+@media (min-width: 992px) {
+  .sidebar-toggle-button {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 0.5rem;
+    justify-content: space-around;
+  }
+
+  .main-content {
+    margin: 0;
+    padding: 1rem;
+    padding-top: 80px;
+  }
+
+  .profile-box,
+  .chart-container {
+    width: 100%;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .card-count {
+    font-size: 1rem;
+  }
+
+  .sidebar {
+    flex-wrap: wrap;
+  }
+
+  .sidebar-button {
+    flex: 1 0 45%;
+    margin: 0.25rem;
+  }
+
+  .sidebar_open {
+    transform: translateX(-100%);
+    width: 260px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar_open.open {
+    transform: translateX(0);
+  }
+
+  .info-card {
+    width: 250px;
+  }
+}

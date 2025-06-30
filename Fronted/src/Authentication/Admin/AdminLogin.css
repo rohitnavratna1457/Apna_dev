@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Admin Login Page Styles
+   ========================================================================== */
+
+ 
+  
+  .admin-login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh; /* Ensure container takes full height if body isn't styled globally */
+    padding: 20px; /* Add some padding for smaller screens */
+    box-sizing: border-box;
+  }
+  
+  .admin-login-card {
+    width: 100%;
+    max-width: 450px; /* Max width of the login card */
+    padding: 20px 30px; /* Internal padding for the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    border-radius: 10px; /* More rounded corners */
+    border: none; /* Remove AntD card border if any */
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 25px; /* Space below header (image + title) */
+  }
+  
+  .login-avatar-image {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    border-radius: 50%; /* Make it circular if it's an avatar */
+    object-fit: cover; /* Ensure image covers, might need to be 'contain' based on image */
+    margin-bottom: 15px; /* Space between image and title */
+    border: 2px solid #eee; /* Optional border */
+  }
+  
+  .login-title {
+    font-size: 1.8em; /* Title size */
+    color: #333;
+    margin: 0; /* Remove default h2 margin */
+    font-weight: 600;
+  }
+  
+  .admin-login-form .ant-form-item {
+    margin-bottom: 20px; /* Space between form items */
+  }
+  
+  .admin-login-form .ant-form-item-label > label {
+    font-weight: 500; /* Make labels slightly bolder */
+    color: #555;
+    padding-bottom: 6px !important; /* AntD specific adjustment */
+  }
+  
+  .admin-login-form .ant-input,
+  .admin-login-form .ant-input-password { /* Target AntD Input and Input.Password */
+    height: 42px; /* Taller input fields */
+    border-radius: 6px; /* Slightly rounded inputs */
+    font-size: 1rem;
+  }
+  .admin-login-form .ant-input-affix-wrapper { /* For Input.Password icon alignment */
+      border-radius: 6px;
+      height: 42px;
+  }
+  .admin-login-form .ant-input-affix-wrapper input.ant-input {
+      height: auto; /* Reset height for input inside affix wrapper */
+  }
+  
+  
+  .login-button-container {
+    margin-top: 25px; /* More space above the button */
+    margin-bottom: 0 !important; /* Remove bottom margin if it's the last item */
+  }
+  
+  .login-submit-button {
+    height: 45px !important; /* Taller button */
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+    /* AntD 'block' prop makes it width: 100% */
+  }
+  .login-submit-button:hover {
+      opacity: 0.9;
+  }
+  
+  
+  /* ==========================================================================
+     Responsive Adjustments
+     ========================================================================== */
+  
+  /* Tablet */
+  @media (max-width: 768px) {
+    .admin-login-card {
+      max-width: 400px;
+      padding: 20px 25px;
+    }
+    .login-title {
+      font-size: 1.6em;
+    }
+    .login-avatar-image {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 576px) {
+    .admin-login-container {
+      /* On very small screens, remove padding if body handles it or card has margin */
+      /* padding: 0;  */
+    }
+    .admin-login-card {
+      /* Make card full width on small screens, with some margin */
+      margin-left: 15px;
+      margin-right: 15px;
+      max-width: none; /* Allow it to be defined by margins */
+      width: auto; /* Reset width from desktop */
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    .login-header {
+      margin-bottom: 20px;
+    }
+    .login-avatar-image {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+    }
+    .login-title {
+      font-size: 1.4em;
+    }
+    .admin-login-form .ant-input,
+    .admin-login-form .ant-input-password,
+    .admin-login-form .ant-input-affix-wrapper {
+      height: 40px; /* Slightly smaller inputs on mobile */
+    }
+    .login-submit-button {
+      height: 42px !important;
+      font-size: 1rem !important;
+    }
+  }

@@ -1,0 +1,398 @@
+/* WithdrawalPage.css */
+
+/* ==========================================================================
+   Base Styles & Page Container
+   ========================================================================== */
+   .withdrawal-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  /* ==========================================================================
+     Header (.withdrawal-header)
+     ========================================================================== */
+  .withdrawal-header {
+    background-color: rgba(7, 110, 148, 1);
+    color: white;
+    height: 60px;
+    padding: 0 20px; /* Padding on left and right */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distributes space: logo left, auth center, toggle right */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  
+  /* Logo styles - Stays on the left */
+  .withdrawal-header .withdrawal-header-logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevents logo from shrinking if space is tight */
+  }
+  
+  .withdrawal-header .withdrawal-header-logo {
+    font-size: 28px;
+    color: white;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  /* Auth links styling - Occupies middle space on desktop */
+  .withdrawal-header .withdrawal-header-auth-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* The justify-content: space-between on parent will position this group */
+  }
+  .withdrawal-header .withdrawal-header-nav-link {
+    text-decoration: none;
+  }
+  .withdrawal-header .withdrawal-header-nav-link p {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+  .withdrawal-header .withdrawal-header-nav-link:hover p {
+    text-decoration: underline;
+  }
+  
+  /* Toggle button styles - Stays on the right */
+  .withdrawal-header .sidebar-toggle-btn.ant-btn {
+    display: none; /* Hidden by default on desktop, shown on mobile */
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer;
+    padding: 5px !important;
+    line-height: 1;
+    min-width: auto !important;
+    height: auto !important;
+    flex-shrink: 0; /* Prevents button from shrinking */
+  }
+  .withdrawal-header .sidebar-toggle-btn.ant-btn:hover,
+  .withdrawal-header .sidebar-toggle-btn.ant-btn:focus {
+    background: none !important;
+    color: #cce7ff !important;
+  }
+  .withdrawal-header .sidebar-toggle-btn.ant-btn .anticon {
+    vertical-align: middle;
+  }
+  
+  /* ==========================================================================
+     Sidebar (.withdrawal-sidebar)
+     ========================================================================== */
+  .withdrawal-sidebar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 220px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding: 20px 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-radius: 0 15px 15px 0;
+    transform: translateX(0);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Custom Scrollbar for Sidebar */
+  .withdrawal-sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .withdrawal-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .withdrawal-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(7, 110, 148, 0.4);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  .withdrawal-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(7, 110, 148, 0.7);
+  }
+  .withdrawal-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(7, 110, 148, 0.7) transparent;
+  }
+  
+  /* Sidebar Links and Buttons */
+  .withdrawal-sidebar-link {
+    text-decoration: none;
+    display: block;
+    margin: 8px 0;
+  }
+  
+  /* General Sidebar Button Styles */
+  .withdrawal-sidebar .withdrawal-sidebar-button.ant-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 1.7px 0 !important;
+    padding: 14px 20px !important;
+    text-align: center !important;
+    color: #444d5a !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  /* Hover state for NON-ACTIVE sidebar buttons */
+  .withdrawal-sidebar-link:not(.active):hover .withdrawal-sidebar-button.ant-btn {
+    background-color: rgba(7, 110, 148, 0.15) !important;
+    color: rgb(40, 190, 38) !important;
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(7, 110, 148, 0.2);
+  }
+  
+  /* Active Sidebar Button Styling - To match the image */
+  .withdrawal-sidebar-link.active .withdrawal-sidebar-button {
+    background-color: rgba(223, 239, 245, 1) !important;
+    color: rgba(7, 110, 148, 1) !important;
+    font-weight: 700 !important;
+    box-shadow: inset 6px 0 0 0 rgba(7, 110, 148, 1) !important;
+    border-radius: 10px !important;
+  }
+  
+  /* Active + Hover state for the active button */
+  .withdrawal-sidebar-link.active:hover .withdrawal-sidebar-button.ant-btn {
+    background-color: rgba(206, 230, 239, 1) !important;
+    color: rgba(7, 110, 148, 1) !important;
+    transform: scale(1.02);
+    box-shadow: inset 6px 0 0 0 rgba(7, 110, 148, 1), 0 3px 10px rgba(7, 110, 148, 0.25) !important;
+    border-radius: 10px !important;
+  }
+  
+  /* Logout Button */
+  .withdrawal-sidebar .withdrawal-sidebar-button.logout-btn {
+    margin-top: auto !important;
+    margin-bottom: 15px !important;
+    color: #d32f2f !important;
+    font-weight: 600 !important;
+    background-color: transparent !important;
+  }
+  .withdrawal-sidebar .withdrawal-sidebar-button.logout-btn:hover {
+    background-color: #ffebee !important;
+    color: #b71c1c !important;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+  }
+  
+  /* ==========================================================================
+     Main Content (.withdrawal-main-content)
+     ========================================================================== */
+  .withdrawal-main-content {
+    margin-left: 220px;
+    padding: 25px;
+    padding-top: calc(60px + 25px);
+    width: calc(100% - 220px);
+    box-sizing: border-box;
+    transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f0f2f5;
+    flex-grow: 1;
+    position: relative;
+  }
+  
+  /* Toggle Cards Container */
+  .withdrawal-toggle-cards-container {
+    display: flex;
+    gap: 0;
+    margin-bottom: 25px;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 5px;
+    width: fit-content; /* Adjust if needed, e.g., 'auto' or specific width */
+    margin-left: auto; /* Center the container if width is less than 100% */
+    margin-right: auto;
+  }
+  .withdrawal-toggle-card {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 25px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    position: relative;
+    border-radius: 12px;
+    margin: 0;
+  }
+  .withdrawal-toggle-card:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .withdrawal-toggle-card.active {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+  .withdrawal-toggle-card-icon {
+    font-size: 20px;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+  .withdrawal-toggle-card.active .withdrawal-toggle-card-icon {
+    color: #076E94;
+  }
+  .withdrawal-toggle-card-label {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+  .withdrawal-toggle-card.active .withdrawal-toggle-card-label {
+    color: #076E94;
+    font-weight: 600;
+  }
+  
+  /* Content Area */
+  .withdrawal-content-area {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mobile Sidebar Overlay */
+  .mobile-sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .mobile-sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* ==========================================================================
+     Responsive Design
+     ========================================================================== */
+  @media (max-width: 1024px) {
+    .withdrawal-main-content {
+      padding: 20px;
+      padding-top: calc(60px + 20px);
+    }
+    .withdrawal-toggle-cards-container {
+      flex-direction: column;
+      width: auto; /* Allow it to take necessary width, or set max-width */
+    }
+    .withdrawal-toggle-card {
+      min-width: 100%; /* When stacked, take full width of parent */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .withdrawal-header {
+      padding: 0 15px;
+      /* justify-content: space-between; /* This is key for mobile layout */
+    }
+  
+    /* --- LOGO ON THE LEFT (MOBILE) --- */
+    .withdrawal-header .withdrawal-header-logo-link {
+      margin-right: auto; /* This pushes the toggle button to the right */
+      position: static; /* Ensure no absolute positioning from other rules */
+      transform: none; /* Ensure no transform from other rules */
+    }
+    .withdrawal-header .withdrawal-header-logo {
+      font-size: 22px;
+    }
+  
+    /* Auth Links are hidden on mobile */
+    .withdrawal-header .withdrawal-header-auth-links {
+      display: none;
+    }
+  
+    /* --- TOGGLE BUTTON ON THE RIGHT (MOBILE) --- */
+    .withdrawal-header .sidebar-toggle-btn.ant-btn {
+      display: inline-flex !important; /* Show hamburger */
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px; /* Minimal space from the right edge if needed */
+    }
+  
+    /* Sidebar responsive adjustments */
+    .withdrawal-sidebar {
+      transform: translateX(-100%); /* Hidden by default */
+      width: 260px; /* Wider for mobile */
+      box-shadow: none; /* Remove desktop shadow */
+      z-index: 1001; /* Above overlay and potentially header */
+    }
+    .withdrawal-sidebar.open {
+      transform: translateX(0); /* Slide in */
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15); /* Shadow when open on mobile */
+    }
+  
+    /* Main content responsive adjustments */
+    .withdrawal-main-content {
+      margin-left: 0; /* Full width when sidebar is closed */
+      width: 100%;
+      padding: 15px;
+      padding-top: calc(60px + 15px);
+    }
+  
+    .withdrawal-toggle-cards-container {
+      width: 100%; /* Make toggle card container take full width */
+      box-sizing: border-box; /* Include padding in width calculation */
+    }
+    .withdrawal-toggle-card {
+      justify-content: center; /* Center content within toggle card */
+      padding: 10px 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .withdrawal-header .withdrawal-header-logo {
+      font-size: 20px;
+    }
+    .withdrawal-main-content {
+      padding: 10px;
+      padding-top: calc(60px + 10px);
+    }
+    .withdrawal-toggle-card-icon {
+      font-size: 18px;
+    }
+    .withdrawal-toggle-card-label {
+      font-size: 14px;
+    }
+    .withdrawal-content-area {
+      padding: 15px;
+    }
+  }

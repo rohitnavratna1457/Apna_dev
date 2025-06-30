@@ -1,0 +1,506 @@
+/* ==========================================================================
+   User_Transaction.css - Styles for User Transaction Page
+   Adapted to match the look and feel of the Admin Panel global styles
+   ========================================================================== */
+
+/*
+  Assuming this component is rendered within a main content area
+  that already has appropriate padding and background (e.g., inside
+  .staff-main-content or .user-tables-main-content from previous examples).
+  If this page is standalone or needs its own overall padding,
+  you can add a wrapper like .user-transaction-page-container.
+*/
+
+/* Base container for the user transaction page */
+.user-transaction-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 25px;
+  padding-top: calc(60px + 25px); /* Header height + padding */
+}
+
+/* ==========================================================================
+   Transaction Table Container
+   ========================================================================== */
+.user-transaction-table-container {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.user-transaction-table-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Title */
+.user-transaction-table-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 25px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Table Styles */
+.user-transaction-table {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  background: white;
+}
+
+.user-transaction-table .ant-table {
+  background: white;
+}
+
+.user-transaction-table .ant-table-container {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Table Header */
+.user-transaction-table .ant-table-thead > tr > th {
+  background-color: #f8fafc !important;
+  font-weight: 600;
+  color: #1f2937;
+  padding: 16px;
+  border-bottom: 2px solid #e5e7eb;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-transaction-table .ant-table-thead > tr > th:hover {
+  background-color: #f1f5f9 !important;
+}
+
+/* Table Body */
+.user-transaction-table .ant-table-tbody > tr > td {
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  color: #374151;
+  font-size: 14px;
+}
+
+.user-transaction-table .ant-table-tbody > tr:hover > td {
+  background-color: #f8fafc;
+}
+
+/* Zebra Striping */
+.user-transaction-table .ant-table-tbody > tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.user-transaction-table .ant-table-tbody > tr:last-child > td {
+  border-bottom: none;
+}
+
+/* Column Alignment */
+.user-transaction-table .ant-table-cell-align-right {
+  text-align: right;
+}
+
+.user-transaction-table .ant-table-cell-align-center {
+  text-align: center;
+}
+
+/* Status Column */
+.user-transaction-table .status-column {
+  width: 120px;
+}
+
+/* Status Tags */
+.user-transaction-table .status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1;
+  text-transform: capitalize;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.user-transaction-table .status-tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.user-transaction-table .status-tag.completed {
+  background-color: #ecfdf5;
+  color: #059669;
+}
+
+.user-transaction-table .status-tag.completed::before {
+  background-color: #059669;
+}
+
+.user-transaction-table .status-tag.pending {
+  background-color: #fffbeb;
+  color: #d97706;
+}
+
+.user-transaction-table .status-tag.pending::before {
+  background-color: #d97706;
+}
+
+.user-transaction-table .status-tag.failed {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.user-transaction-table .status-tag.failed::before {
+  background-color: #dc2626;
+}
+
+/* Amount Column */
+.user-transaction-table .amount-column {
+  font-family: 'SF Mono', 'Roboto Mono', monospace;
+  font-weight: 500;
+}
+
+.user-transaction-table .amount-positive {
+  color: #059669;
+}
+
+.user-transaction-table .amount-negative {
+  color: #dc2626;
+}
+
+/* Date Column */
+.user-transaction-table .date-column {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Action Buttons */
+.user-transaction-table-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.user-transaction-table-actions .ant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.user-transaction-table-actions .ant-btn > span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.user-transaction-table-actions .ant-btn .anticon {
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.user-transaction-table-actions .ant-btn-primary {
+  background: rgba(7, 110, 148, 1);
+  border-color: rgba(7, 110, 148, 1);
+  color: white;
+}
+
+.user-transaction-table-actions .ant-btn-primary:hover {
+  background: rgba(5, 88, 118, 1);
+  border-color: rgba(5, 88, 118, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(7, 110, 148, 0.2);
+}
+
+.user-transaction-table-actions .ant-btn-default {
+  background: white;
+  border-color: #e5e7eb;
+  color: #374151;
+}
+
+.user-transaction-table-actions .ant-btn-default:hover {
+  border-color: rgba(7, 110, 148, 1);
+  color: rgba(7, 110, 148, 1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.user-transaction-table-actions .ant-btn-dangerous {
+  background: white;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.user-transaction-table-actions .ant-btn-dangerous:hover {
+  background: #dc2626;
+  color: white;
+  border-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.2);
+}
+
+/* Selection Styles */
+.user-transaction-table .ant-table-row-selected > td {
+  background-color: #f0f9ff !important;
+}
+
+.user-transaction-table .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: rgba(7, 110, 148, 1);
+  border-color: rgba(7, 110, 148, 1);
+}
+
+/* Loading State */
+.user-transaction-table .ant-spin {
+  color: rgba(7, 110, 148, 1);
+}
+
+.user-transaction-table .ant-table-placeholder {
+  background: white;
+}
+
+.user-transaction-table .ant-table-placeholder .ant-table-cell {
+  border-bottom: none;
+}
+
+/* Empty State */
+.user-transaction-table .ant-empty {
+  padding: 32px 0;
+  color: #6b7280;
+}
+
+.user-transaction-table .ant-empty-image {
+  height: 80px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.user-transaction-table .ant-empty-description {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Pagination */
+.user-transaction-table .ant-table-pagination.ant-pagination {
+  margin: 16px 0;
+  padding: 0 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-transaction-table .ant-pagination-item,
+.user-transaction-table .ant-pagination-prev,
+.user-transaction-table .ant-pagination-next {
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  margin-right: 4px;
+}
+
+.user-transaction-table .ant-pagination-item:hover,
+.user-transaction-table .ant-pagination-prev:hover .ant-pagination-item-link,
+.user-transaction-table .ant-pagination-next:hover .ant-pagination-item-link {
+  border-color: rgba(7, 110, 148, 1);
+  color: rgba(7, 110, 148, 1);
+}
+
+.user-transaction-table .ant-pagination-item-active {
+  background: rgba(7, 110, 148, 1);
+  border-color: rgba(7, 110, 148, 1);
+}
+
+.user-transaction-table .ant-pagination-item-active a {
+  color: white;
+}
+
+.user-transaction-table .ant-pagination-options {
+  margin-left: 16px;
+}
+
+.user-transaction-table .ant-select-selector {
+  border-radius: 6px !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .user-transaction-table .ant-table-thead > tr > th,
+  .user-transaction-table .ant-table-tbody > tr > td {
+    padding: 12px;
+  }
+
+  .user-transaction-table-actions {
+    flex-wrap: wrap;
+  }
+
+  .user-transaction-table .status-tag {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-transaction-table .ant-table-thead > tr > th,
+  .user-transaction-table .ant-table-tbody > tr > td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .user-transaction-table-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .user-transaction-table-actions .ant-btn {
+    width: 100%;
+  }
+
+  .user-transaction-table .status-tag {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+
+  .user-transaction-table .ant-table-pagination.ant-pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Search and Filter Section */
+.user-transaction-filters {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.user-transaction-filters .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.user-transaction-filters .ant-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.user-transaction-search {
+  max-width: 300px;
+}
+
+.user-transaction-search .ant-input-affix-wrapper {
+  border-radius: 6px;
+}
+
+.user-transaction-search .ant-input-affix-wrapper:hover,
+.user-transaction-search .ant-input-affix-wrapper:focus {
+  border-color: rgba(7, 110, 148, 1);
+  box-shadow: 0 0 0 2px rgba(7, 110, 148, 0.1);
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .user-transaction-page {
+    padding: 20px;
+    padding-top: calc(60px + 20px);
+  }
+
+  .user-transaction-table-title {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-transaction-page {
+    padding: 15px;
+    padding-top: calc(60px + 15px);
+  }
+
+  .user-transaction-table-container {
+    padding: 20px;
+  }
+
+  .user-transaction-filters {
+    padding: 15px;
+  }
+
+  .user-transaction-search {
+    max-width: 100%;
+  }
+
+  .user-transaction-table-title {
+    font-size: 1.2em;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .user-transaction-table .ant-table-thead > tr > th,
+  .user-transaction-table .ant-table-tbody > tr > td {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-transaction-page {
+    padding: 10px;
+    padding-top: calc(60px + 10px);
+  }
+
+  .user-transaction-table-container {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .user-transaction-table-title {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+
+  .user-transaction-filters {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
+  .user-transaction-table-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .user-transaction-table-actions .ant-btn {
+    width: 100%;
+    margin: 4px 0;
+  }
+
+  .user-transaction-table .ant-table-thead > tr > th,
+  .user-transaction-table .ant-table-tbody > tr > td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .user-transaction-table .status-tag {
+    padding: 2px 8px;
+    font-size: 12px;
+  }
+}

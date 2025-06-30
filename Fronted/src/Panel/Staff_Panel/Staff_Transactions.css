@@ -1,0 +1,259 @@
+/* ==========================================================================
+   Base & Global Styles (If not already in a global file)
+   ========================================================================== */
+  
+  
+  /* Main layout container for staff pages */
+  .staff-layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* ==========================================================================
+     Header (.app-header) - Shared Style
+     ========================================================================== */
+  .app-header {
+    background-color: rgba(7, 110, 148, 1);
+    color: white;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  
+  .header-logo-link {
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  
+  .header-logo-text {
+    font-size: 28px;
+    color: white;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .header-right-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header-nav-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-auth-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header-nav-link p {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+  .header-nav-link:hover p {
+    text-decoration: underline;
+  }
+  
+  .sidebar-toggle-btn {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+  }
+  
+  /* ==========================================================================
+     Sidebar (.app-sidebar) - Shared Style
+     ========================================================================== */
+  .app-sidebar {
+    background-color: white;
+    width: 220px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transform: translateX(0); /* Visible on desktop */
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+  }
+  
+  .sidebar-btn {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    color: #333 !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0px !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .sidebar-btn:hover {
+    background-color: #eef1f5 !important;
+    color: rgba(7, 110, 148, 1) !important;
+  }
+  .sidebar-btn.active { /* Style for the active sidebar link */
+    background-color: rgba(7, 110, 148, 0.1) !important;
+    color: rgba(7, 110, 148, 1) !important;
+    font-weight: 600;
+  }
+  
+  /* ==========================================================================
+     Main Content for Staff Transactions Page
+     ========================================================================== */
+  .main-content.staff-transactions-content {
+    margin-left: 220px; /* Sidebar width */
+    padding: 25px;
+    padding-top: 85px; /* Header height + top space */
+    width: calc(100% - 220px); /* Full width minus sidebar */
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 1.8em; /* Larger title */
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 30px; /* More space below title */
+    font-weight: 500;
+  }
+  
+  .transactions-table-container {
+    background-color: white;
+    padding: 20px; /* Padding around the table */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+    overflow-x: auto; /* CRITICAL for table horizontal scrolling */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .transactions-data-table .ant-table {
+    min-width: 700px; /* Adjust based on your number of columns */
+  }
+  
+  .transactions-data-table .ant-table-thead > tr > th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #555;
+    padding: 12px 10px; /* Standard padding for header cells */
+    font-size: 0.9rem;
+    white-space: nowrap; /* Prevent header text from wrapping too early */
+  }
+  .transactions-data-table .ant-table-tbody > tr > td {
+    padding: 10px 8px; /* Standard padding for data cells */
+    font-size: 0.875rem;
+    vertical-align: middle;
+    line-height: 1.4;
+  }
+  
+  /* ==========================================================================
+     Responsive Media Queries
+     ========================================================================== */
+  
+  /* Tablet and larger mobile landscape */
+  @media (max-width: 1024px) {
+    .header-logo-text {
+      font-size: 26px;
+    }
+    /* Sidebar might still be visible or toggle like mobile depending on preference */
+    /* If sidebar toggles on tablet:
+    .app-sidebar { transform: translateX(-100%); }
+    .app-sidebar.open { transform: translateX(0); }
+    .main-content.staff-transactions-content { margin-left: 0; width: 100%; }
+    .sidebar-toggle-btn { display: block; }
+    .header-nav-wrapper { display: none; }
+    */
+    .transactions-table-container {
+      padding: 15px;
+    }
+  }
+  
+  /* Mobile (Portrait tablets and phones) */
+  @media (max-width: 768px) {
+    .app-header {
+      padding: 0 15px;
+    }
+    .header-logo-text {
+      font-size: 22px;
+    }
+    .header-right-content {
+      gap: 10px;
+    }
+    .header-nav-wrapper { /* Profile/Auth links */
+      display: none;
+    }
+    .sidebar-toggle-btn {
+      display: block; /* Show hamburger menu */
+    }
+  
+    .app-sidebar {
+      transform: translateX(-100%); /* Hide sidebar off-screen */
+      width: 260px;
+      box-shadow: 4px 0 10px rgba(0,0,0,0.15);
+    }
+    .app-sidebar.open {
+      transform: translateX(0);
+    }
+  
+    .main-content.staff-transactions-content {
+      margin-left: 0; /* Full width content */
+      width: 100%;
+      padding: 15px;
+      padding-top: 75px; /* Header height + space */
+    }
+  
+    .page-title {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+  
+    .transactions-table-container {
+      padding: 10px 5px; /* Less padding for table container on mobile */
+    }
+  
+    .transactions-data-table .ant-table-thead > tr > th {
+      padding: 10px 6px; /* More compact header cells */
+      font-size: 0.8rem;
+    }
+    .transactions-data-table .ant-table-tbody > tr > td {
+      padding: 8px 6px; /* More compact data cells */
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Smaller mobile phones */
+  @media (max-width: 480px) {
+    .page-title {
+      font-size: 1.3em;
+    }
+    .transactions-data-table .ant-table-thead > tr > th {
+      font-size: 0.75rem; /* Even smaller for very small screens */
+    }
+    .transactions-data-table .ant-table-tbody > tr > td {
+      font-size: 0.75rem;
+    }
+  }

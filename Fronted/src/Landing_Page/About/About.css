@@ -1,0 +1,192 @@
+/* Main About Us Container */
+.about-us-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .text-section {
+    flex: 1;
+    padding-right: 20px;
+    animation: fadeInLeft 1s ease-in-out;
+  }
+  
+  .image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease-in-out;
+  }
+  
+  .title {
+    font-size: 2em;
+    color: #333;
+    border-bottom: 3px solid #007bff;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .highlights {
+    margin-top: 20px;
+  }
+  
+  .highlight-item {
+    font-size: 1em;
+    color: #007bff;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .highlight-item .icon {
+    margin-right: 10px;
+  }
+  
+  .image {
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Keyframes for animations */
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Responsive Design for Mobile View */
+  @media (max-width: 500px) {
+    .about-us-container {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .text-section {
+      padding-right: 0;
+      padding-bottom: 20px;
+      animation: none; /* Disable animations for mobile */
+    }
+  
+    .image-section {
+      animation: none; /* Disable animations for mobile */
+    }
+  
+    .title {
+      font-size: 1.5em;
+    }
+  
+    .description {
+      font-size: 1em;
+    }
+  
+    .highlight-item {
+      font-size: 0.9em;
+    }
+  
+    .image {
+      width: 100%;
+    }
+  }
+  
+  /* About Information Styling */
+  .about-info {
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    font-family: 'Arial', sans-serif;
+    margin-top: 20px;
+  }
+  
+  .section {
+    background-color: #ffffff; /* White background for each section */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Space between sections */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow around each section */
+    transition: all 0.3s ease-in-out; /* Smooth hover effect */
+  }
+  
+  .section:hover {
+    transform: translateY(-5px); /* Slight hover effect */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  .section-title {
+    font-size: 1.8em;
+    color: #007bff; /* Blue title */
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase; /* All caps for emphasis */
+    letter-spacing: 1px; /* Space between letters */
+    border-bottom: 3px solid #007bff; /* Underline effect */
+    padding-bottom: 5px;
+  }
+  
+  .section-description {
+    font-size: 1.2em;
+    color: #555; /* Soft gray text */
+    line-height: 1.6; /* Improved readability */
+    font-weight: 400; /* Regular weight */
+  }
+  
+  @media (max-width: 768px) {
+    .about-info {
+      padding: 20px;
+    }
+  
+    .section-title {
+      font-size: 1.5em;
+    }
+  
+    .section-description {
+      font-size: 1em;
+    }
+  }
+  
+  /* About Title Styling */
+.about-title {
+    font-size: 2.8em; /* Slightly larger font for emphasis */
+    color: #333; /* Dark color for title */
+    font-weight: bold; /* Make title bold for emphasis */
+    margin-bottom: 20px; /* Space below the title */
+    text-transform: uppercase; /* Make the title capitalized */
+    letter-spacing: 2px; /* Increased space between letters for a refined look */
+    border-bottom: 4px solid #007bff; /* Blue underline for emphasis */
+    padding-bottom: 15px; /* Increased padding for more space under the title */
+    transition: all 0.3s ease; /* Smooth transition effect */
+  }
+  
+  /* Title Hover Effect */
+  .about-title:hover {
+    color: #007bff; /* Change title color to blue when hovered */
+    border-bottom: 4px solid #0056b3; /* Darker blue underline when hovered */
+    transform: translateY(-5px); /* Slight lift effect when hovered */
+  }
+  

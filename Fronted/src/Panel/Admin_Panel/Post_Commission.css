@@ -1,0 +1,400 @@
+/* ==========================================================================
+   Post_Commission.css - Styles for Commission Management Page
+   Adapted from User_Tables.css
+   ========================================================================== */
+
+/* Base container for the whole commission page */
+.commission-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  /* ==========================================================================
+     Header (.commission-header)
+     ========================================================================== */
+  .commission-header {
+    background-color: rgba(7, 110, 148, 1);
+    color: white;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  
+  .commission-header .header-left-content {
+    flex-shrink: 0;
+  }
+  
+  .commission-header .header-logo-link {
+    text-decoration: none;
+  }
+  
+  .commission-header .commission-header-logo {
+    font-size: 28px;
+    color: white;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .commission-header .commission-header-auth-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+    padding-right: 15px;
+  }
+  
+  .commission-header .header-nav-link {
+    text-decoration: none;
+  }
+  
+  .commission-header .header-nav-link p {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    padding: 5px 0;
+  }
+  .commission-header .header-nav-link:hover p {
+    text-decoration: underline;
+  }
+  
+  .commission-header .sidebar-toggle-btn.ant-btn {
+    display: none;
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer;
+    padding: 5px !important;
+    line-height: 1;
+    min-width: auto !important;
+    height: auto !important;
+    margin-left: 10px;
+  }
+  .commission-header .sidebar-toggle-btn.ant-btn:hover,
+  .commission-header .sidebar-toggle-btn.ant-btn:focus {
+    background: none !important;
+    color: #cce7ff !important;
+  }
+  
+  /* ==========================================================================
+     Sidebar (.commission-sidebar)
+     ========================================================================== */
+  .commission-sidebar {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 220px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding: 20px 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-radius: 0 15px 15px 0;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .commission-sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .commission-sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .commission-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .commission-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(7, 110, 148, 0.4);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  .commission-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(7, 110, 148, 0.7);
+  }
+  .commission-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(7, 110, 148, 0.7) transparent;
+  }
+  
+  .commission-sidebar a {
+    text-decoration: none;
+    display: block;
+  }
+  
+  .commission-sidebar .commission-sidebar-button.ant-btn {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 8px 0 !important;
+    padding: 14px 20px !important;
+    text-align: left !important;
+    color: #444d5a !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer;
+    letter-spacing: 0.4px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  .commission-sidebar .commission-sidebar-button.ant-btn > span {
+      white-space: normal;
+      line-height: 1.4;
+  }
+  
+  .commission-sidebar a .commission-sidebar-button.ant-btn:hover,
+  .commission-sidebar .commission-sidebar-button.ant-btn:not(:last-of-type):hover {
+    background-color: rgba(7, 110, 148, 0.15) !important;
+    color: rgb(40, 190, 38) !important;
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(7, 110, 148, 0.2);
+  }
+  
+  .commission-sidebar .commission-sidebar-button.ant-btn.active {
+    background-color: rgba(7, 110, 148, 0.12) !important;
+    color: rgba(7, 110, 148, 1) !important;
+    font-weight: 700 !important;
+    box-shadow: inset 4px 0 0 0 rgba(7, 110, 148, 1) !important;
+    border-radius: 12px 0 0 12px !important;
+    transform: scale(1);
+  }
+  
+  .commission-sidebar > button.commission-sidebar-button.ant-btn:last-of-type {
+    margin-top: auto !important;
+    margin-bottom: 15px !important;
+    color: #d32f2f !important;
+    font-weight: 600 !important;
+    background-color: transparent !important;
+  }
+  .commission-sidebar > button.commission-sidebar-button.ant-btn:last-of-type:hover {
+    background-color: #ffebee !important;
+    color: #b71c1c !important;
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+  }
+  
+  /* ==========================================================================
+     Main Content (.commission-main-content)
+     ========================================================================== */
+  .commission-main-content {
+    margin-left: 30px;
+    padding: 25px;
+    padding-top: calc(60px + 25px);
+    width: calc(100% - 30px);
+    box-sizing: border-box;
+    transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mobile-sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+  }
+  .mobile-sidebar-overlay.active {
+    display: block;
+  }
+  
+  /* ==========================================================================
+     Commission Specific Content Styles
+     ========================================================================== */
+  .commission-form-container {
+    background-color: #ffffff;
+    padding: 30px 40px; /* Increased padding */
+    border-radius: 12px; /* Softer radius */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    width: 100%;
+    max-width: 650px; /* Max width for the form card */
+    margin-top: 20px; /* Space from top or title */
+  }
+  
+  .commission-form-title {
+    font-size: 1.8em; /* Larger title */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px; /* More space below title */
+    text-align: center; /* Center the title */
+    width: 100%; /* Ensure it takes full width for centering */
+  }
+  
+  .commission-form .ant-form-item-label > label {
+    font-weight: 500;
+    color: #555;
+    min-width: 140px; /* Align labels nicely */
+    text-align: right;
+    padding-right: 10px;
+  }
+  
+  .commission-form .ant-form-item-control-input-content > .ant-input,
+  .commission-form .ant-form-item-control-input-content > .ant-input-number {
+    width: 100%; /* Make inputs take full available width within their column */
+    max-width: 350px; /* Max width for input fields */
+  }
+  .commission-form .ant-form-item {
+      display: flex; /* For label and input alignment */
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 20px; /* Consistent spacing */
+  }
+  
+  .commission-form .ant-form-item-control {
+      flex-grow: 1;
+  }
+  
+  
+  .commission-form-submit-button.ant-btn-primary {
+    background-color: rgba(7, 110, 148, 1);
+    border-color: rgba(7, 110, 148, 1);
+    font-weight: 500;
+    padding: 0 30px; /* More padding for button */
+    height: 40px; /* Taller button */
+    font-size: 1rem;
+  }
+  .commission-form-submit-button.ant-btn-primary:hover {
+    background-color: rgba(5, 88, 118, 1);
+    border-color: rgba(5, 88, 118, 1);
+  }
+  .commission-form .ant-form-item:last-child { /* Target submit button container */
+      display: flex;
+      justify-content: center; /* Center the button */
+      margin-top: 20px;
+  }
+  
+  
+  /* ==========================================================================
+     Responsive Media Queries
+     ========================================================================== */
+  @media (max-width: 1024px) {
+    .commission-main-content {
+      padding: 20px;
+      padding-top: calc(60px + 20px);
+    }
+    .commission-form-container {
+      max-width: 90%;
+      padding: 25px;
+    }
+    .commission-form-title {
+      font-size: 1.5em;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .commission-header {
+      padding: 0 15px;
+    }
+    .commission-header .commission-header-logo {
+      font-size: 22px;
+    }
+    .commission-header .commission-header-auth-links {
+      display: none;
+    }
+    .commission-header .sidebar-toggle-btn.ant-btn {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .commission-sidebar {
+      width: 220px; 
+      padding: 15px 10px;
+      box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 0 10px 10px 0;
+    }
+  
+    .commission-sidebar .commission-sidebar-button.ant-btn {
+      margin: 6px 0 !important;
+      padding: 12px 15px !important;
+      font-size: 0.95rem !important;
+    }
+    .commission-sidebar .commission-sidebar-button.ant-btn:hover,
+    .commission-sidebar > button.commission-sidebar-button.ant-btn:last-of-type:hover {
+      transform: none;
+      box-shadow: none;
+    }
+     .commission-sidebar a .commission-sidebar-button.ant-btn:hover,
+     .commission-sidebar .commission-sidebar-button.ant-btn:not(:last-of-type):hover {
+       background-color: rgba(7, 110, 148, 0.1) !important;
+     }
+     .commission-sidebar > button.commission-sidebar-button.ant-btn:last-of-type:hover {
+       background-color: #ffeeee !important;
+     }
+  
+    .commission-main-content {
+      margin-left: 0;
+      width: 100%;
+      padding: 15px;
+      padding-top: calc(60px + 15px);
+      align-items: stretch;
+    }
+  
+    .commission-form-container {
+      padding: 20px;
+      max-width: 100%; /* Full width on smaller mobile */
+      margin-top: 15px;
+    }
+    .commission-form-title {
+      font-size: 1.3em;
+      margin-bottom: 20px;
+    }
+    .commission-form .ant-form-item {
+      flex-direction: column; /* Stack label and input on mobile */
+      align-items: flex-start;
+    }
+    .commission-form .ant-form-item-label > label {
+      min-width: auto;
+      text-align: left;
+      padding-right: 0;
+      margin-bottom: 5px;
+    }
+    .commission-form .ant-form-item-control-input-content > .ant-input,
+    .commission-form .ant-form-item-control-input-content > .ant-input-number {
+      max-width: none; /* Allow full width */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .commission-header .commission-header-logo {
+      font-size: 20px;
+    }
+    .commission-main-content {
+      padding: 10px;
+      padding-top: calc(60px + 10px);
+    }
+    .commission-form-container {
+      padding: 15px;
+    }
+    .commission-form-title {
+      font-size: 1.15em;
+    }
+  }

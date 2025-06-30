@@ -1,0 +1,437 @@
+/* ==========================================================================
+   Staff_Tables.css - Styles for Staff Management Page
+   Adapted to match the look and feel of the Admin Panel global styles
+   ========================================================================== */
+
+/* Base container for the whole staff page */
+.staff-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Consistent main content background for the page */
+}
+
+/* ==========================================================================
+   Header (.staff-header)
+   ========================================================================== */
+.staff-header {
+  background-color: rgba(7, 110, 148, 1);
+  color: white;
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This will space out logo, auth-links, and toggle button */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* Logo styles */
+.staff-header .header-logo-link {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.staff-header .staff-header-logo { /* This is the <p> tag for "Ristey" */
+  font-size: 28px;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Auth links styling (Sign up, Login, Profile) */
+.staff-header .staff-header-auth-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.staff-header .header-nav-link p { /* Assuming header-nav-link is the <a> and <p> is inside */
+  font-size: 15px;
+  color: white;
+  margin: 0;
+  text-decoration: none;
+  padding: 5px 0;
+}
+.staff-header .header-nav-link:hover p {
+  text-decoration: underline;
+}
+
+/* Sidebar Toggle Button (Hamburger Icon) */
+.staff-header .sidebar-toggle-btn.ant-btn { /* Targeting the Ant Design button */
+  display: none; /* Hidden by default, shown on mobile */
+  background: none !important;
+  border: none !important;
+  color: white !important;
+  font-size: 24px !important; /* Adjust if '☰' looks too small/big */
+  cursor: pointer;
+  padding: 5px !important;
+  line-height: 1;
+  min-width: auto !important;
+  height: auto !important;
+}
+.staff-header .sidebar-toggle-btn.ant-btn:hover,
+.staff-header .sidebar-toggle-btn.ant-btn:focus {
+  background: none !important;
+  color: #cce7ff !important;
+}
+
+/* ==========================================================================
+   Sidebar (.staff-sidebar)
+   ========================================================================== */
+.staff-sidebar {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 220px; /* MODIFIED: Was 200px, now 220px */
+  height: calc(100vh - 60px); /* Full height minus header */
+  position: fixed;
+  top: 60px; /* Below header */
+  left: 0;
+  padding: 20px 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border-radius: 0 15px 15px 0;
+  transform: translateX(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbar for Sidebar */
+.staff-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.staff-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.staff-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(7, 110, 148, 0.4);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+.staff-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(7, 110, 148, 0.7);
+}
+/* For Firefox */
+.staff-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(7, 110, 148, 0.7) transparent;
+}
+
+
+/* Styling for sidebar buttons (Ant Design buttons wrapped in Links or direct) */
+.staff-sidebar a { /* For link-wrapped buttons */
+  text-decoration: none;
+  display: block;
+}
+
+.staff-sidebar .staff-sidebar-button.ant-btn {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 8px 0 !important;
+  padding: 14px 20px !important;
+  text-align: left !important;
+  color: #444d5a !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.staff-sidebar .staff-sidebar-button.ant-btn > span { /* Ensure text wraps if needed */
+    white-space: normal;
+    line-height: 1.4;
+}
+
+/* General Sidebar Button Hover (applied to buttons inside <a> or not the logout button) */
+.staff-sidebar a .staff-sidebar-button.ant-btn:hover,
+.staff-sidebar .staff-sidebar-button.ant-btn:not(:last-of-type):hover { /* Catches buttons not the logout one, if logout is always last */
+  background-color: rgba(7, 110, 148, 0.15) !important;
+  color: rgb(40, 190, 38) !important; /* Green hover text as per reference */
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(7, 110, 148, 0.2);
+}
+
+/* Active Sidebar Button */
+.staff-sidebar .staff-sidebar-button.ant-btn.active {
+  background-color: rgba(7, 110, 148, 0.12) !important;
+  color: rgba(7, 110, 148, 1) !important;
+  font-weight: 700 !important;
+  box-shadow: inset 4px 0 0 0 rgba(7, 110, 148, 1) !important;
+  border-radius: 12px 0 0 12px !important; /* Ensure only left side has the active indicator feel */
+  transform: scale(1); /* Reset transform for active state if needed */
+}
+
+/* Logout Button (assumed to be the last direct button child of staff-sidebar) */
+.staff-sidebar > button.staff-sidebar-button.ant-btn:last-of-type {
+  margin-top: auto !important; /* Pushes it to the bottom */
+  margin-bottom: 15px !important;
+  color: #d32f2f !important;
+  font-weight: 600 !important;
+  background-color: transparent !important;
+}
+.staff-sidebar > button.staff-sidebar-button.ant-btn:last-of-type:hover {
+  background-color: #ffebee !important;
+  color: #b71c1c !important;
+  transform: scale(1.03); /* Keep consistent hover transform */
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+}
+
+
+/* ==========================================================================
+   Main Content (.staff-main-content)
+   ========================================================================== */
+.staff-main-content {
+  margin-left: 220px; /* MODIFIED: Was 200px, now 220px */
+  padding: 25px;
+  padding-top: calc(60px + 25px); /* Header height + desired top padding */
+  width: calc(100% - 220px); /* MODIFIED: Was 200px, now 220px */
+  box-sizing: border-box;
+  transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  /* background-color: #f0f2f5; /* Already on staff-page-container, remove if redundant */
+  flex-grow: 1; /* Takes remaining vertical space */
+  position: relative;
+}
+
+/* Mobile Sidebar Overlay */
+.mobile-sidebar-overlay { /* This is a sibling to staff-main-content in your React component */
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 998; /* Below sidebar but above content */
+}
+.staff-page-container > .mobile-sidebar-overlay.active, /* If you move it to be child of staff-page-container */
+.mobile-sidebar-overlay.active { /* If it remains a sibling as in current JSX */
+  display: block;
+}
+/* The .active class needs to be toggled on the .mobile-sidebar-overlay element itself based on isSidebarOpen */
+
+
+/* ==========================================================================
+   Staff_Tables Specific Content Styles (Forms, Tables)
+   ========================================================================== */
+
+.add-staff-button-container {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: flex-end; /* Aligns button to the right */
+}
+
+.add-staff-button.ant-btn-primary {
+  background-color: rgba(7, 110, 148, 1);
+  border-color: rgba(7, 110, 148, 1);
+  font-weight: 500;
+}
+.add-staff-button.ant-btn-primary:hover {
+  background-color: rgba(5, 88, 118, 1);
+  border-color: rgba(5, 88, 118, 1);
+}
+
+/* Form Section & Table Container - General card styling */
+.form-section,
+.staff-table-container {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px; /* Consistent spacing */
+}
+
+/* Title for Forms and Tables */
+.form-title,
+.table-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0; /* Remove default h3 margin if any */
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* Staff Form Specifics (Ant Design Form) */
+.staff-form .ant-form-item-label > label {
+  font-weight: 500; /* Make labels slightly bolder */
+  color: #555;
+}
+.staff-form .staff-form-submit-button.ant-btn-primary {
+  background-color: rgba(7, 110, 148, 1);
+  border-color: rgba(7, 110, 148, 1);
+}
+.staff-form .staff-form-submit-button.ant-btn-primary:hover {
+  background-color: rgba(5, 88, 118, 1);
+  border-color: rgba(5, 88, 118, 1);
+}
+
+/* Table Action Buttons */
+.table-actions .ant-btn {
+  margin-right: 8px;
+}
+.table-actions .ant-btn:last-child {
+  margin-right: 0;
+}
+.table-actions .ant-btn-dangerous { /* For Delete button */
+  color: #fff !important;
+  background-color: #d32f2f !important;
+  border-color: #d32f2f !important;
+}
+.table-actions .ant-btn-dangerous:hover {
+  background-color: #b71c1c !important;
+  border-color: #b71c1c !important;
+}
+
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .staff-main-content {
+    padding: 20px;
+    padding-top: calc(60px + 20px);
+  }
+
+  .form-title,
+  .table-title {
+    font-size: 1.35em;
+  }
+}
+
+@media (max-width: 768px) {
+  .staff-header {
+    padding: 0 15px;
+  }
+  .staff-header .staff-header-logo {
+    font-size: 22px;
+  }
+  .staff-header .staff-header-auth-links {
+    display: none; /* Hide auth links on mobile, profile link might be in sidebar */
+  }
+  .staff-header .sidebar-toggle-btn.ant-btn {
+    display: inline-flex !important; /* Show toggle button */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .staff-sidebar {
+    transform: translateX(-100%); /* Hidden by default */
+    width: 220px; /* MODIFIED: Was 200px, now 220px */
+    padding: 15px 10px;
+    box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 10px 10px 0;
+  }
+  .staff-sidebar.open {
+    transform: translateX(0); /* Slides in when open */
+  }
+
+  .staff-sidebar .staff-sidebar-button.ant-btn {
+    margin: 6px 0 !important;
+    padding: 12px 15px !important;
+    font-size: 0.95rem !important;
+  }
+  .staff-sidebar .staff-sidebar-button.ant-btn:hover,
+  .staff-sidebar > button.staff-sidebar-button.ant-btn:last-of-type:hover {
+    transform: none; /* Disable scale transform on mobile hover */
+    box-shadow: none; /* Disable shadow on mobile hover */
+  }
+  /* Retain specific hover colors for mobile if needed, or simplify */
+   .staff-sidebar a .staff-sidebar-button.ant-btn:hover,
+   .staff-sidebar .staff-sidebar-button.ant-btn:not(:last-of-type):hover {
+     background-color: rgba(7, 110, 148, 0.1) !important; /* Slightly more subtle hover on mobile */
+     /* color: rgb(40, 190, 38) !important; /* Green hover text */
+   }
+   .staff-sidebar > button.staff-sidebar-button.ant-btn:last-of-type:hover {
+     background-color: #ffeeee !important; /* Lighter red hover for logout */
+     /* color: #b71c1c !important; */
+   }
+
+
+  .staff-main-content {
+    margin-left: 0; /* Full width on mobile when sidebar is closed */
+    width: 100%;
+    padding: 15px;
+    padding-top: calc(60px + 15px); /* Header height + new padding */
+  }
+  /* If you want content to push when sidebar is open on mobile: */
+  /*
+  .staff-main-content.sidebar-open-mobile-push { // You'd need to add this class via JS
+    margin-left: 220px; // MODIFIED: Was 200px, now 220px
+  }
+  */
+  /* However, an overlay is generally preferred for mobile sidebars. */
+  /* The current .mobile-sidebar-overlay will work without pushing content. */
+
+
+  .form-section,
+  .staff-table-container {
+    padding: 15px;
+  }
+  .form-title,
+  .table-title {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+  }
+
+  .add-staff-button-container {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .staff-header .staff-header-logo {
+    font-size: 20px;
+  }
+
+  .staff-main-content {
+    padding: 10px;
+    padding-top: calc(60px + 10px); /* Header height + new padding */
+  }
+  .form-section,
+  .staff-table-container {
+    padding: 10px;
+  }
+  .form-title,
+  .table-title {
+    font-size: 1.15em;
+  }
+
+  .staff-form .ant-form-item {
+    margin-bottom: 16px; /* Reduce spacing between form items on small screens */
+  }
+  .staff-form .ant-btn { /* Make form buttons take more width */
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .staff-form .ant-btn + .ant-btn {
+    margin-left: 0 !important; /* Stack buttons vertically */
+  }
+
+  .table-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .table-actions .ant-btn {
+    width: 100%;
+    margin-right: 0;
+  }
+}

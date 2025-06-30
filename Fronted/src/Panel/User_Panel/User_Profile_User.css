@@ -1,0 +1,456 @@
+/* UserProfile.css (Your External CSS File) */
+
+
+.profile-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+    /* border: 1px solid green; */
+
+  /* overflow: hidden; */
+}
+
+.cover-image-wrapper {
+  width: 100%;
+  height: auto;
+  /* position: relative; */
+  aspect-ratio: 3 / 1;
+}
+
+.cover-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Responsive: smaller height on mobile */
+@media (max-width: 768px) {
+  .cover-image-wrapper {
+    aspect-ratio: 3 / 1;
+  }
+
+  .camera-icon {
+    width: 32px;
+    height: 32px;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  .camera-icon img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
+
+.user-profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 10px;
+  margin-left: 0;
+  /* Remove fixed left margin */
+}
+
+.cover-image {
+  /* min-height: 200px; */
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.profile-picture-card {
+  width: 200px;
+  height: 200px;
+  margin-left: 100px;
+  margin-top: -80px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  border: 2px solid #fff;
+  /* Added a subtle white border for better visibility */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Added a subtle shadow */
+}
+
+.profile-picture {
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.upload-button-container {
+  margin-left: 250px;
+  margin-top: -10px;
+}
+
+.upload-button {
+  width: 50px;
+}
+
+.upload-icon {
+  font-size: 22px;
+}
+
+
+.user-name {
+  margin-top: -110px;
+  margin-left: 340px;
+  font-size: 30px;
+  font-weight: bold;
+  /* Added bold for emphasis */
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  margin-left: 50px;
+}
+
+.social-icon {
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Specific Colors */
+.social-icon.whatsapp {
+  background-color: #25D366;
+}
+
+.social-icon.facebook {
+  background-color: #3b5998;
+}
+
+.social-icon.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.social-icon.twitter {
+  background-color: #1DA1F2;
+}
+
+
+.tabs-container {
+  margin-top: 40px;
+}
+
+.tab-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 12px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+/* Ensure tab buttons fill their cell */
+.tab-button {
+  width: 100%;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  transition: background-color 0.3s;
+}
+
+.tab-button:hover {
+  background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 600px) {
+  .tab-buttons {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller devices */
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .tab-buttons {
+    grid-template-columns: 1fr; /* Stack vertically */
+  }
+}
+
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+  padding-top: 10px;
+  justify-content: flex-start;
+  /* Align items to the start */
+}
+
+.gallery-item {
+  width: calc(25% - 8px);
+  /* 4 items per row with gap */
+}
+
+.gallery-image {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  /* Slightly rounded corners for images */
+}
+
+.form-section {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: calc(100% - 40px);
+  /* Adjust width to account for margins */
+}
+
+.form-submit-button-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .profile-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .profile-picture-card {
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .upload-button-container {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .user-name {
+    margin-left: 0;
+    text-align: center;
+    margin-top: -70px;
+    /* Adjust as needed */
+  }
+
+  .social-icons {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .tab-buttons {
+    column-gap: 8px;
+    row-gap: 8px;
+    justify-content: center;
+  }
+
+  .tab-button {
+    width: 100px;
+    font-size: 14px;
+  }
+
+  .gallery-item {
+    width: calc(33.33% - 7px);
+    /* 3 items per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    margin-top: 5px;
+  }
+
+  .profile-picture-card {
+    width: 150px;
+    height: 150px;
+    padding-top: 6px;
+    margin-top: -60px;
+  }
+
+  .profile-picture {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cover-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .user-name {
+    font-size: 24px;
+    margin-top: -20px;
+  }
+
+  .social-icon {
+    font-size: 24px;
+    margin-right: 15px;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+    /* Stack buttons vertically on small screens */
+    align-items: center;
+    /* Center stacked buttons */
+  }
+
+  .tab-button {
+    width: 80%;
+    /* Full width for stacked buttons */
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  .gallery-item {
+    width: calc(50% - 5px);
+    /* 2 items per row on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .cover-image {
+    width: 100%;
+    height: 150px;
+  }
+
+  .profile-picture-card {
+    width: 120px;
+    height: 120px;
+    padding-top: 5px;
+    margin-top: -50px;
+  }
+
+  .profile-picture {
+    width: 110px;
+    height: 110px;
+  }
+
+  .user-name {
+    font-size: 20px;
+    margin-top: -30px;
+  }
+
+  .social-icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .tab-button {
+    font-size: 14px;
+  }
+
+  .gallery-item {
+    width: 100%;
+    /* 1 item per row on extra small screens */
+  }
+
+  .form-section {
+    margin-left: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .profile-image-container {
+    width: 100%;
+  }
+
+}
+
+
+/* Add or update this section within existing code */
+
+/* --- Increased cover image height on medium screens --- */
+@media (min-width: 768px) and (max-width: 992px) {
+  .cover-image {
+    width: 100%;
+    height: 320px;
+  }
+  
+.profile-image-container {
+  width: 100%;
+}
+
+}
+
+/* --- Redesigned Profile Upload Button --- */
+.upload-button-container {
+  position: relative;
+  /* margin-left: 250px; */
+  margin-top: -30px;
+  z-index: 999;
+}
+
+.upload-button {
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #f5f5f5;
+}
+
+.upload-icon {
+  font-size: 20px;
+  color: #555;
+}
+
+/* Optional hidden input for file upload */
+.file-input {
+  display: none;
+}
+
+
+

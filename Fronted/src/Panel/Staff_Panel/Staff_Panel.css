@@ -1,0 +1,514 @@
+/* ==========================================================================
+   Base & Global Styles
+   ========================================================================== */
+
+
+
+.app-layout {
+  /* Renamed for generic use */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Header (.app-header)
+   ========================================================================== */
+.app-header {
+  background-color: rgba(7, 110, 148, 1);
+  color: white;
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.header-logo-link {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.header-logo-text {
+  font-size: 28px;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+}
+
+.header-right-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-nav {
+  /* Standardized class name */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-auth-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-nav-link p {
+  font-size: 15px;
+  color: white;
+  margin: 0;
+  text-decoration: none;
+  padding: 5px 0;
+}
+
+.header-nav-link:hover p {
+  text-decoration: underline;
+}
+
+.sidebar-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Sidebar (.app-sidebar)
+   ========================================================================== */
+.app-sidebar {
+  background-color: white;
+  width: 220px;
+  /* Using fixed, reliable width */
+  height: calc(100vh - 60px);
+  position: fixed;
+  top: 60px;
+  left: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.app-sidebar.open {
+  /* For mobile toggle */
+  transform: translateX(0);
+}
+
+
+.sidebar-btn {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+  color: #333 !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0px !important;
+  padding: 14px 20px !important;
+  font-size: 15px !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-btn:hover {
+  background-color: #eef1f5 !important;
+  color: rgba(7, 110, 148, 1) !important;
+}
+
+.sidebar-btn.active {
+  background-color: rgba(7, 110, 148, 0.1) !important;
+  color: rgba(7, 110, 148, 1) !important;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Main Content (.main-content1)
+   ========================================================================== */
+.main-content1 {
+  margin-left: 220px;
+  /* Matching the sidebar width */
+  padding: 25px;
+  padding-top: 85px;
+  /* Header height + top space */
+  width: calc(100% - 250px);
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Modifier for Dashboard Layout */
+.main-content1.dashboard-layout {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Page-Specific: User/Data Management (Forms, Tables)
+   ========================================================================== */
+.content-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 25px;
+  width: 100%;
+  /* Ensure it spans width in flex layouts */
+}
+
+.content-actions .ant-btn {
+  min-width: 100px;
+}
+
+.form-container,
+.user-table-container {
+  background-color: white;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-container h2,
+.user-table-container h2 {
+  font-size: 1.4em;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: rgba(7, 110, 148, 1);
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.user-table-container {
+  overflow-x: auto;
+}
+
+.user-data-table .ant-table {
+  min-width: 600px;
+}
+
+.user-data-table .ant-table-thead>tr>th {
+  background-color: #fafafa;
+  font-weight: 600;
+  padding: 10px 8px;
+  white-space: nowrap;
+}
+
+.user-data-table .ant-table-tbody>tr>td {
+  padding: 8px 6px;
+  vertical-align: middle;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-buttons .ant-btn {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Page-Specific: Dashboard (Profile, Stats)
+   ========================================================================== */
+.profile-section11 {
+  flex: 1 1 320px;
+  min-width: 300px;
+}
+
+.profile-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-pic-container {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #eee;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.stats-section {
+  flex: 2 1 600px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-content: flex-start;
+}
+
+.stat-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  min-width: 200px;
+  flex: 1;
+  min-height: 170px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: rgba(7, 110, 148, 0.8);
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.chart-container {
+  width: 100%;
+
+  margin: 0px 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex-basis: 100%;
+}
+
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+
+/* Tablet and larger mobile landscape (e.g., iPad portrait) */
+@media (max-width: 1024px) {
+  .header-logo-text {
+    font-size: 26px;
+  }
+
+  .form-container,
+  .user-table-container,
+  .profile-card,
+  .chart-container {
+    padding: 15px;
+  }
+}
+
+/* Mobile (Portrait tablets and phones) */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0 15px;
+  }
+
+  .header-logo-text {
+    font-size: 22px;
+  }
+
+  .header-right-content {
+    gap: 10px;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .sidebar-toggle-btn {
+    display: block;
+  }
+
+  .app-sidebar {
+    transform: translateX(-100%);
+    width: 260px;
+    /* Slightly wider for better touch targets on mobile */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .main-content1 {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+    padding-top: 75px;
+    /* Header height + space */
+  }
+
+  .main-content1.dashboard-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Form/Page Actions */
+  .content-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .content-actions .ant-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  /* Cards and Containers */
+  .form-container,
+  .user-table-container,
+  .profile-card,
+  .chart-container {
+    padding: 15px;
+  }
+
+  .form-container h2,
+  .user-table-container h2 {
+    font-size: 1.25em;
+    margin-bottom: 20px;
+  }
+
+  .profile-section {
+    max-width: none;
+  }
+
+  .profile-pic-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .stats-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stat-card {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .stat-card:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Table Styles */
+  .user-table-container {
+    padding: 5px;
+  }
+
+  .user-data-table .ant-table-thead>tr>th,
+  .user-data-table .ant-table-tbody>tr>td {
+    padding: 8px 5px;
+    font-size: 0.8rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .action-buttons .ant-btn {
+    width: 100%;
+    min-width: unset;
+    text-align: center;
+  }
+}
+
+/* Smaller mobile phones */
+@media (max-width: 480px) {
+
+  .user-data-table .ant-table-thead>tr>th,
+  .user-data-table .ant-table-tbody>tr>td {
+    font-size: 0.75rem;
+  }
+
+  .content-actions .ant-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .action-buttons .ant-btn {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .main-content1 {
+    margin-left: 0;
+  }
+  .profile-card{
+    width: 95%;
+  }
+  .chart-container{
+    margin: 0;
+  }
+}
+
+@media screen 
+  and (min-width: 1280px) 
+  and (max-width: 1536px) 
+  and (-webkit-min-device-pixel-ratio: 2),
+  screen 
+  and (min-width: 1280px) 
+  and (max-width: 1536px) 
+  and (min-resolution: 2dppx) {
+
+
+  .header-logo-text {
+    font-size: 30px; 
+  }
+
+  .main-content1.dashboard-layout {
+    gap: 35px; 
+  }
+
+  .stat-card {
+    min-height: 180px; 
+  }
+  
+  .stat-value {
+    font-size: 26px; 
+  }
+
+  .user-data-table .ant-table-tbody > tr > td {
+    font-size: 14px; 
+    padding: 10px 8px;
+  }
+}

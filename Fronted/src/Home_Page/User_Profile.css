@@ -1,0 +1,278 @@
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+}
+
+.profile-card {
+  border: 3px solid #ccc !important;
+  border-radius: 50% !important;
+  width: 200px !important;
+  height: 200px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info-container {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.username {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.details {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.icons-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: black;
+}
+
+.icon:hover {
+  color: gray;
+}
+
+.icon.whatsapp:hover { color: #25D366; }
+.icon.facebook:hover { color: #1877F2; }
+.icon.instagram:hover { color: #E4405F; }
+.icon.twitter:hover { color: #1DA1F2; }
+.icon.gmail:hover { color: #D44638; }
+.icon.call:hover { color: #34B7F1; }
+
+@media (max-width: 600px) {
+  .info-container {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+
+
+
+
+/*  */
+
+
+/* ProfileCard.module.css - Next Level Design */
+
+.card {
+  margin-top: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Softer, more spread-out shadow */
+  overflow: hidden; /* Ensures rounded corners clip content */
+}
+
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px; /* Slightly reduced gap for more compact look */
+  margin-top: -25px; /* Keeps the buttons overlapping the card top */
+  padding: 0 20px; /* Add horizontal padding for consistency */
+  justify-content: flex-start; /* Align buttons to the start */
+  align-items: center;
+}
+
+.buttonWrapper {
+  padding-bottom: 25px; /* Space below buttons, pushing content down */
+}
+
+.button {
+  width: 100px;
+  height: 45px; /* Slightly taller buttons for a more substantial feel */
+  font-size: 16px; /* Slightly smaller font for sleekness */
+  border-radius: 8px; /* Rounded button corners */
+  border: 1px solid #e0e0e0; /* Subtle border */
+  background-color: #f7f7f7; /* Light background */
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transitions for hover effects */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Individual button shadow */
+}
+
+.button:hover {
+  background-color: #e6f7ff; /* Lighter blue on hover */
+  border-color: #91d5ff; /* Blue border on hover */
+  color: #1890ff; /* Ant Design primary blue */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+/* Specific widths for certain buttons - adjust as needed */
+.familyDetailsButton,
+.addressDetailButton {
+  width: 135px;
+}
+
+.educationButton {
+  width: 110px;
+}
+
+/* Active tab button style */
+.button[aria-current="true"] { /* Assuming you add aria-current="true" to the active button */
+  background-color: #1890ff; /* Primary blue for active state */
+  color: #ffffff;
+  border-color: #1890ff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.galleryContent {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px; /* Consistent gap */
+  row-gap: 15px; /* Consistent gap */
+  padding: 20px; /* Padding inside the gallery section */
+  justify-content: center; /* Center images within the space */
+}
+
+.imageWrapper {
+  width: calc(25% - 12px); /* 4 images per row, accounting for gaps */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Image shadow */
+  transition: transform 0.2s ease-in-out;
+}
+
+.imageWrapper:hover {
+  transform: scale(1.03); /* Slight zoom on hover */
+}
+
+.image {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  display: block; /* Removes extra space below image */
+  border-radius: 8px; /* Ensures image inside wrapper has rounded corners */
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For screens smaller than 1024px (e.g., larger tablets) */
+@media (max-width: 1024px) {
+  .galleryContent {
+    column-gap: 12px;
+    row-gap: 12px;
+  }
+  .imageWrapper {
+    width: calc(33.33% - 10px); /* 3 images per row */
+  }
+}
+
+
+/* For screens smaller than 768px (e.g., tablets and large phones) */
+@media (max-width: 768px) {
+  .buttonContainer {
+    column-gap: 10px;
+    padding: 0 15px;
+    justify-content: center; /* Center buttons when they start wrapping */
+  }
+
+  .button {
+    width: 110px; /* Slightly wider buttons for better tap target */
+    font-size: 15px;
+    height: 40px;
+  }
+
+  .familyDetailsButton,
+  .addressDetailButton {
+    width: 125px; /* Adjust as needed */
+  }
+
+  .educationButton {
+    width: 100px;
+  }
+
+  .buttonWrapper {
+    padding-bottom: 15px; /* Adjust spacing for smaller screens */
+  }
+
+  .galleryContent {
+    padding: 15px;
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+
+  .imageWrapper {
+    width: calc(50% - 7px); /* 2 images per row */
+  }
+}
+
+/* For screens smaller than 480px (e.g., mobile phones) */
+@media (max-width: 480px) {
+  .buttonContainer {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center stacked buttons */
+    margin-top: 0;
+    row-gap: 10px; /* Space between stacked buttons */
+    padding: 15px; /* Add some padding to the button container */
+  }
+
+  .button,
+  .familyDetailsButton,
+  .addressDetailButton,
+  .educationButton {
+    width: 90%; /* Nearly full width buttons */
+    max-width: 250px; /* Limit max width for stacked buttons */
+    font-size: 16px;
+    height: 45px;
+  }
+
+  .buttonWrapper {
+    padding-bottom: 0; /* Remove extra padding when stacked */
+    width: 100%; /* Ensures p tag also takes full width for centering */
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .galleryContent {
+    padding: 10px;
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+
+  .imageWrapper {
+    width: calc(100% - 16px); /* 1 image per row, adjust for padding */
+    width: 95%; /* Make images almost full width */
+  }
+  .imageWrapper p {
+    margin: 0; /* Remove default paragraph margin */
+  }
+}

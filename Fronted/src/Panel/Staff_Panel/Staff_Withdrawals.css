@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Base & Global Styles (If not already in a global file)
+   ========================================================================== */
+  
+  
+  .staff-layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* ==========================================================================
+     Header (.app-header) - Shared Style
+     ========================================================================== */
+  .app-header {
+    background-color: rgba(7, 110, 148, 1);
+    color: white;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  
+  .header-logo-link {
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  
+  .header-logo-text {
+    font-size: 28px;
+    color: white;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .header-right-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header-nav-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-auth-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header-nav-link p {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+  .header-nav-link:hover p {
+    text-decoration: underline;
+  }
+  
+  .sidebar-toggle-btn {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+  }
+  
+  /* ==========================================================================
+     Sidebar (.app-sidebar) - Shared Style
+     ========================================================================== */
+  .app-sidebar {
+    background-color: white;
+    width: 220px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transform: translateX(0); /* Visible on desktop */
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+  }
+  
+  .sidebar-btn {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    color: #333 !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0px !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .sidebar-btn:hover {
+    background-color: #eef1f5 !important;
+    color: rgba(7, 110, 148, 1) !important;
+  }
+  .sidebar-btn.active {
+    background-color: rgba(7, 110, 148, 0.1) !important;
+    color: rgba(7, 110, 148, 1) !important;
+    font-weight: 600;
+  }
+  
+  /* ==========================================================================
+     Main Content for Staff Withdrawals Page
+     ========================================================================== */
+  .main-content.staff-withdrawals-content {
+    margin-left: 220px; /* Sidebar width */
+    padding: 25px;
+    padding-top: 85px; /* Header height + top space */
+    width: calc(100% - 220px);
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+    display: flex; /* Added for centering content sections */
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center sections horizontally */
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 500;
+    width: 100%; /* Ensure title takes full width before centering its text */
+  }
+  
+  .balance-withdrawal-section {
+    display: flex;
+    /* Default to column for mobile-first, will change with media query */
+    flex-direction: column;
+    align-items: center; /* Center items within this section */
+    gap: 20px;
+    margin-bottom: 40px;
+    padding: 25px; /* Increased padding */
+    background-color: #fff;
+    border-radius: 10px; /* More rounded */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+    width: 100%; /* Take full width of parent initially */
+    max-width: 700px; /* Max width for desktop to keep it contained */
+    box-sizing: border-box;
+  }
+  
+  .balance-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Slightly more gap */
+    padding: 20px 30px; /* More padding */
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    /* min-width: 280px; */ /* Let it be flexible */
+  }
+  
+  .balance-icon {
+    font-size: 2.8em; /* Slightly larger */
+    color: rgba(7, 110, 148, 1);
+  }
+  
+  .balance-amount {
+    font-size: 2.8em;
+    font-weight: 700; /* Bolder */
+    color: #1a1a1a; /* Darker for better contrast */
+    line-height: 1;
+  }
+  
+  .withdrawal-button {
+    font-size: 1.05rem !important; /* Slightly larger font */
+    padding: 12px 30px !important;
+    min-width: 220px; /* Ensure button has good width */
+    border-radius: 6px !important; /* Consistent rounding */
+  }
+  .withdrawal-button.ant-btn-dangerous.ant-btn-primary[disabled] {
+      background-color: #ffccc7 !important;
+      border-color: #ffccc7 !important;
+      color: rgba(0,0,0,0.45) !important;
+      cursor: not-allowed !important;
+  }
+  
+  .transactions-history-section {
+    margin-top: 10px; /* Reduced margin from balance section */
+    width: 100%; /* Take full width of parent */
+    max-width: 1000px; /* Max width for the table section, can be wider */
+    box-sizing: border-box;
+  }
+  
+  .section-subtitle {
+    font-size: 1.4em;
+    color: #444;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  /* Table container - CRITICAL FOR HORIZONTAL SCROLL ON ALL DEVICES */
+  .transactions-table-container {
+    background-color: white;
+    padding: 15px; /* Adjusted padding */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+    overflow-x: auto; /* This enables horizontal scrolling */
+    width: 100%; /* Ensure it takes full width of its parent (.transactions-history-section) */
+    box-sizing: border-box;
+  }
+  
+  /* The AntD table itself */
+  .transactions-data-table .ant-table {
+    /* This min-width is a fallback, 'max-content' in JS scroll prop is better */
+    min-width: 650px; /* Adjust based on your table's content, e.g., sum of column widths */
+  }
+  
+  .transactions-data-table .ant-table-thead > tr > th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #555;
+    padding: 12px 10px;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Prevent header text from wrapping */
+  }
+  .transactions-data-table .ant-table-tbody > tr > td {
+    padding: 10px 8px;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    white-space: nowrap; /* Optional: prevent cell content from wrapping if desired */
+  }
+  
+  .loading-text {
+    text-align: center;
+    font-size: 1.1em;
+    color: #777;
+    padding: 20px;
+  }
+  
+  /* ==========================================================================
+     Responsive Media Queries
+     ========================================================================== */
+  
+  /* For larger screens (Desktop) where balance and button are side-by-side */
+  @media (min-width: 769px) { /* Changed from 600px to target typical desktop views */
+      .balance-withdrawal-section {
+          flex-direction: row;
+          justify-content: space-between; /* Space out card and button */
+          align-items: center; /* Vertically align them */
+      }
+      .balance-card {
+          /* No specific width, let content define it or use flex-grow if needed */
+      }
+      .withdrawal-button {
+          /* No specific width, let content define it */
+      }
+  }
+  
+  /* Tablet and larger mobile landscape */
+  @media (max-width: 1024px) {
+    .main-content.staff-withdrawals-content {
+      padding-left: 20px; /* Adjust padding if needed */
+      padding-right: 20px;
+    }
+    .balance-withdrawal-section {
+      max-width: 95%; /* Allow it to be a bit wider on tablets */
+      padding: 20px;
+    }
+    .transactions-history-section {
+      max-width: 95%;
+    }
+    .header-logo-text { font-size: 26px; }
+  }
+  
+  /* Mobile (Portrait tablets and phones) */
+  @media (max-width: 768px) {
+    .app-header { padding: 0 15px; }
+    .header-logo-text { font-size: 22px; }
+    .header-right-content { gap: 10px; }
+    .header-nav-wrapper { display: none; }
+    .sidebar-toggle-btn { display: block; }
+  
+    .app-sidebar { transform: translateX(-100%); width: 260px; }
+    .app-sidebar.open { transform: translateX(0); }
+  
+    .main-content.staff-withdrawals-content {
+      margin-left: 0;
+      width: 100%;
+      padding: 15px; /* Reduce padding for mobile */
+      padding-top: 75px;
+      align-items: stretch; /* Allow children to take full width before their own max-width applies */
+    }
+  
+    .page-title { font-size: 1.5em; margin-bottom: 20px; }
+  
+    .balance-withdrawal-section {
+      flex-direction: column; /* Ensure it's column for mobile */
+      padding: 20px 15px; /* Adjust padding */
+      gap: 15px;
+      max-width: 100%; /* Full width on mobile */
+    }
+    .balance-card {
+      width: 100%; /* Full width */
+      padding: 15px;
+      box-sizing: border-box;
+      justify-content: center;
+    }
+    .balance-icon { font-size: 2em; }
+    .balance-amount { font-size: 2em; }
+    .withdrawal-button {
+      width: 100%; /* Full width button */
+      font-size: 1rem !important;
+      padding: 12px 20px !important;
+    }
+  
+    .section-subtitle { font-size: 1.25em; margin-bottom: 15px; }
+  
+    .transactions-history-section {
+      max-width: 100%; /* Full width for table section */
+    }
+    .transactions-table-container {
+      padding: 10px 0px; /* Reduce padding, no horizontal padding for container as table scrolls */
+    }
+    .transactions-data-table .ant-table-thead > tr > th { padding: 10px 8px; font-size: 0.8rem; }
+    .transactions-data-table .ant-table-tbody > tr > td { padding: 8px 8px; font-size: 0.8rem; }
+  }
+  
+  /* Smaller Mobile */
+  @media (max-width: 480px) {
+    .main-content.staff-withdrawals-content { padding: 10px; padding-top: 70px; }
+    .page-title { font-size: 1.3em; }
+    .balance-withdrawal-section { padding: 15px 10px; }
+    .balance-icon { font-size: 1.8em; }
+    .balance-amount { font-size: 1.8em; }
+    .withdrawal-button { font-size: 0.95rem !important; }
+  
+    .transactions-data-table .ant-table-thead > tr > th { font-size: 0.75rem; padding: 8px 5px; }
+    .transactions-data-table .ant-table-tbody > tr > td { font-size: 0.75rem; padding: 8px 5px; }
+  }

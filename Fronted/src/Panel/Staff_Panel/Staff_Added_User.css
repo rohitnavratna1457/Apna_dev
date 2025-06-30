@@ -1,0 +1,374 @@
+/* ==========================================================================
+   Base & Global Styles
+   ========================================================================== */
+  
+
+  .staff-layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+/* ==========================================================================
+   Header (.app-header)
+   ========================================================================== */
+  .app-header {
+    background-color: rgba(7, 110, 148, 1);
+    color: white;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+
+  .header-logo-link {
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .header-logo-text {
+    font-size: 28px;
+    color: white;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .header-right-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header-nav-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-auth-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header-nav-link p {
+    font-size: 15px;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+  .header-nav-link:hover p {
+    text-decoration: underline;
+  }
+
+  .sidebar-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+  }
+
+/* ==========================================================================
+   Sidebar (.app-sidebar)
+   ========================================================================== */
+  .app-sidebar {
+    background-color: white;
+    width: 220px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    top: 60px;
+    left: 0;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .sidebar-btn {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    color: #333 !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0px !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .sidebar-btn:hover {
+    background-color: #eef1f5 !important;
+    color: rgba(7, 110, 148, 1) !important;
+  }
+  .sidebar-btn.active {
+    background-color: rgba(7, 110, 148, 0.1) !important;
+    color: rgba(7, 110, 148, 1) !important;
+    font-weight: 600;
+  }
+
+/* ==========================================================================
+   Main Content (.main-content)
+   ========================================================================== */
+  .main-content.staff-added-user-content {
+    margin-left: 220px;
+    padding: 25px;
+    padding-top: 85px; /* Header height + top space */
+    width: calc(100% - 220px);
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+  }
+
+  /* Action buttons container (Add User, Cancel) */
+  .content-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .content-actions .ant-btn {
+    min-width: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+/* ==========================================================================
+   Forms (.form-container, .user-update-form)
+   ========================================================================== */
+  .form-container {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+  }
+  .form-container h2 {
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: rgba(7, 110, 148, 1);
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Update User Form specific styling (assumes layout="vertical" in AntD Form) */
+  .user-update-form .ant-form-item {
+    margin-bottom: 18px !important;
+  }
+  .user-update-form .ant-form-item-label > label {
+    font-weight: 500;
+    padding-bottom: 6px !important;
+  }
+  .user-update-form .ant-input,
+  .user-update-form .ant-select .ant-select-selector { /* For AntD Select */
+    border-radius: 4px;
+  }
+  .user-update-form .submit-update-btn-item {
+    margin-top: 10px;
+  }
+  .user-update-form .submit-update-btn {
+    min-width: 130px;
+  }
+
+  /* Styles for the User_Reg component if it's directly embedded and needs styling */
+  .add-user-form-container .user-reg-component-wrapper { /* Example class for User_Reg wrapper */
+    /* Add specific styling for User_Reg form here if needed */
+  }
+
+
+/* ==========================================================================
+   Table (.user-table-container)
+   ========================================================================== */
+  .user-table-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+    overflow-x: auto; /* CRITICAL for table horizontal scrolling */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .user-table-container h2 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: rgba(7, 110, 148, 1);
+  }
+
+  .user-data-table .ant-table {
+    min-width: 600px; /* Adjust based on your table's column needs */
+  }
+
+  .user-data-table .ant-table-thead > tr > th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #555;
+    padding: 10px 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .user-data-table .ant-table-tbody > tr > td {
+    padding: 8px 6px;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    line-height: 1.4;
+  }
+
+  /* Action Buttons inside the table */
+  .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .action-buttons .ant-btn {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+
+  /* Tablet and larger mobile landscape (e.g., iPad portrait) */
+  @media (max-width: 1024px) {
+    .app-sidebar {
+      /* Example: if you want sidebar to hide on tablet too */
+      /* transform: translateX(-100%); */
+    }
+    /* If sidebar hides, adjust main content: */
+    /* .main-content.staff-added-user-content.sidebar-closed {
+      margin-left: 0;
+      width: 100%;
+    } */
+
+    .header-logo-text {
+      font-size: 26px;
+    }
+    .user-table-container {
+      padding: 10px;
+    }
+  }
+
+  /* Mobile (Portrait tablets and phones) */
+  @media (max-width: 768px) {
+    .app-header {
+      padding: 0 15px;
+    }
+    .header-logo-text {
+      font-size: 22px;
+    }
+    .header-right-content {
+      gap: 10px;
+    }
+    .header-nav-wrapper {
+      display: none;
+    }
+    .sidebar-toggle-btn {
+      display: block;
+    }
+
+    .app-sidebar {
+      transform: translateX(-100%);
+      width: 260px;
+      box-shadow: 4px 0 10px rgba(0,0,0,0.15);
+    }
+    .app-sidebar.open {
+      transform: translateX(0);
+    }
+
+    .main-content.staff-added-user-content {
+      margin-left: 0;
+      width: 100%;
+      padding: 15px;
+      padding-top: 75px; /* Header height + space */
+    }
+
+    .content-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .content-actions .ant-btn {
+      width: 100%;
+      font-size: 1rem;
+      padding: 10px 15px;
+    }
+    .content-actions .ant-btn:not(:first-child) {
+        /* margin-top: 10px; Removed as gap handles it */
+    }
+
+    .form-container {
+      padding: 15px;
+    }
+    .form-container h2 {
+      font-size: 1.25em;
+      margin-bottom: 20px;
+    }
+    /* Update form fields will stack naturally due to AntD's vertical layout */
+
+    .user-table-container {
+      padding: 5px;
+    }
+    .user-table-container h2 {
+      font-size: 1.15em;
+      margin-bottom: 15px;
+    }
+
+    .user-data-table .ant-table-thead > tr > th {
+      padding: 8px 5px;
+      font-size: 0.8rem;
+    }
+    .user-data-table .ant-table-tbody > tr > td {
+      padding: 6px 5px;
+      font-size: 0.8rem;
+    }
+
+    /* Action Buttons in Table for Mobile */
+    .action-buttons {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+      width: 100%;
+    }
+    .action-buttons .ant-btn {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 8px 10px;
+      min-width: unset;
+      text-align: center;
+    }
+  }
+
+  /* Smaller mobile phones (Optional further refinement) */
+  @media (max-width: 480px) {
+    .header-logo-text {
+      /* font-size: 20px; */ /* Or even hide text, show icon */
+    }
+    .user-data-table .ant-table-thead > tr > th {
+      font-size: 0.75rem;
+    }
+    .user-data-table .ant-table-tbody > tr > td {
+      font-size: 0.75rem;
+    }
+    .content-actions .ant-btn {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+    .action-buttons .ant-btn {
+      padding: 6px 8px;
+      font-size: 0.8rem;
+    }
+  }
