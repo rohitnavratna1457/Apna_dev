@@ -19,6 +19,16 @@
   transition: background-color 0.3s ease;
 }
 
+.profile-picture-wrapper {
+  margin-bottom: 60px;
+}
+
+.profile-picture {
+  position: absolute;
+  margin-top: -12%;
+}
+
+
 /* Content padding to offset fixed header */
 .content-padding {
   padding: 100px 25px 25px;
