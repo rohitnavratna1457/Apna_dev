@@ -92,8 +92,12 @@ function Staff_Withdrawals() {
   };
 
   const transactionColumns = [
-    { title: "ID", dataIndex: "id", key: "id", width: 80, fixed: "left" },
-    { title: "Staff ID", dataIndex: "staff_id", key: "staff_id", width: 100 },
+    {
+      title: "ID",
+      key: "id",
+      render: (text, record, index) => index + 1,
+      width: 130,
+    },
     {
       title: "Amount",
       dataIndex: "amount",

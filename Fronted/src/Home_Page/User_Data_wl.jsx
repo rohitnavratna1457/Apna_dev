@@ -1,5 +1,3 @@
-
-
 ////////////////////////////////////////////////////////////
 
 import { IoSend } from "react-icons/io5";
@@ -26,7 +24,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import user_image from "../Assets/wedding1.jpg";
 
 function User_data() {
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
 
   const id_param = useParams();
   const int_id = String(id_param.id);
@@ -68,9 +66,8 @@ function User_data() {
     localStorage.setItem("id_navigate", value);
   };
   return (
-    
-
     <div>
+      
       <div className="header">
         <Link to="/Home_Page_wLog">
           <p className="header-title">Ristey</p>
@@ -83,17 +80,15 @@ function User_data() {
         ) : (
           <div className="header-auth-links">
             <Link to="/User_Login">
-              <p className="header-auth-link-signup">Login </p>
+              <p className="header-auth-link-signup">Login</p>
             </Link>
-
           </div>
         )}
       </div>
+
       <div className="content-padding">
         {data.map((i) => (
           <Card className="user-card" key={i.User_id}>
-            
-
             <Image
               className=""
               src={`${baseurl}${i.cover_img}`}
@@ -177,7 +172,10 @@ function User_data() {
                 </Button>
               ) : (
                 <Link to="/User_Login" className="login-link">
-                  <Button style={{ height: "33px", width: "100px" }} onClick={() => id_navigate(i.User_id)}>
+                  <Button
+                    style={{ height: "33px", width: "100px" }}
+                    onClick={() => id_navigate(i.User_id)}
+                  >
                     Login
                   </Button>
                 </Link>
@@ -268,43 +266,6 @@ function User_data() {
                   )}
                 </div>
               )}
-
-              {/* {activeTab === "profile" && (
-                <div className="profile-details-container">
-                  <div>
-                    <p className="detail-label-column">Name : </p>
-                    <p className="detail-value-column">{i.username}</p>
-                    <p className="detail-label-column">Caste : </p>
-                    <p className="detail-value-column">{i.caste}</p>
-                    <p className="detail-label-column">Religion : </p>
-                    <p className="detail-value-column">{i.religion}</p>
-                    <p className="detail-label-column">Date Of Birth : </p>
-                    <p className="detail-value-column">{i.dob}</p>
-                    <p className="detail-label-column">Gender : </p>
-                    <p className="detail-value-column">{i.gender}</p>
-                    <p className="detail-label-column">Age : </p>
-                    <p className="detail-value-column">{i.age}</p>
-                  </div>
-                  <div className="profile-details-right-column">
-                    <p className="detail-label-column">Marrige Status : </p>
-                    <p className="profile-details-right-value-column">
-                      {i.marrige_status}
-                    </p>
-                    <p className="detail-label-column">Job : </p>
-                    <p className="profile-details-right-value-column">
-                      {i.job_title}
-                    </p>
-                    <p className="detail-label-column">Job Type : </p>
-                    <p className="profile-details-right-value-column">
-                      {i.job_type}
-                    </p>
-                    <p className="detail-label-column">Salary : </p>
-                    <p className="profile-details-right-value-column">
-                      {i.salary}
-                    </p>
-                  </div>
-                </div>
-              )} */}
 
               {activeTab === "profile" && (
                 <div className="profile-details-grid">
