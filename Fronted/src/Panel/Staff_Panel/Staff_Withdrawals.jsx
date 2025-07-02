@@ -22,6 +22,14 @@ function Staff_Withdrawals() {
   const [transactions, setTransactions] = useState([]); // For their transaction history
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const staff_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (staff_role === null || staff_role != 'staff') {
+      Navigate('/')
+    }
+  }
+
   const fetchData = async () => {
     if (!staffId) {
       message.warn("Staff ID not found. Please log in.");
@@ -48,6 +56,7 @@ function Staff_Withdrawals() {
   };
 
   useEffect(() => {
+    permission()
     fetchData();
   }, [staffId]);
 
@@ -92,12 +101,8 @@ function Staff_Withdrawals() {
   };
 
   const transactionColumns = [
-    {
-      title: "ID",
-      key: "id",
-      render: (text, record, index) => index + 1,
-      width: 130,
-    },
+    { title: "ID", dataIndex: "id", key: "id", width: 80, fixed: "left" },
+    { title: "Staff ID", dataIndex: "staff_id", key: "staff_id", width: 100 },
     {
       title: "Amount",
       dataIndex: "amount",

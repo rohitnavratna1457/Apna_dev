@@ -25,7 +25,14 @@ function Staff_Panel() {
   const [form] = Form.useForm();
   const intid = localStorage.getItem('user_id')
   const int_id = String(intid)
-  // const int_id = (id);
+
+  const staff_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (staff_role === null || staff_role != 'staff') {
+      Navigate('/')
+    }
+  }  // const int_id = (id);
   // console.log( int_id, "********* int_id ********");
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -34,14 +41,14 @@ function Staff_Panel() {
   const [cmonth_revenue, setCMonth_revenue] = useState([]);
   const [pop, setPop] = useState(null)
   const [userref, setUserRef] = useState([]);
-  console.log(staff, '***** staff *****')
+  console.log(cmonth_revenue, '***** cmonth_revenue *****')
 
 
   const get = async () => {
     const staff_response = await UserGet();
 
     const filter_current_staff = staff_response.filter((i) => i.id === int_id && i.role === 'staff');
-    console.log(staff_response, '***** filter_current_staff *****')
+    console.log(filter_current_staff, '***** filter_current_staff *****')
 
     setStaff(filter_current_staff);
     form.setFieldsValue(filter_current_staff[0]);
@@ -54,17 +61,18 @@ function Staff_Panel() {
 
     const StaffTotalRevenueGet_response1 = await StaffTotalRevenueGet();
     const StaffTotalRevenueGet_response = StaffTotalRevenueGet_response1.filter(i => i.staff_id === int_id)
+    console.log(StaffTotalRevenueGet_response, '***** StaffTotalRevenueGet_response1 *******')
 
     const filteredUsers_Jan = StaffTotalRevenueGet_response.filter(
       (i) => i.month === "01"
     );
     const total_amount_1 = filteredUsers_Jan.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Jan")
+      prev.some(item => item.month === "January")
         ? prev.map(item =>
-          item.month === "Jan" ? { month: "Jan", amount: total_amount_1 } : item
+          item.month === "January" ? { month: "January", amount: total_amount_1 } : item
         )
-        : [...prev, { month: "Jan", amount: total_amount_1 }]
+        : [...prev, { month: "January", amount: total_amount_1 }]
     );
 
 
@@ -73,11 +81,11 @@ function Staff_Panel() {
     );
     const total_amount_2 = filteredUsers_feb.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Feb")
+      prev.some(item => item.month === "February")
         ? prev.map(item =>
-          item.month === "Feb" ? { month: "Feb", amount: total_amount_2 } : item
+          item.month === "February" ? { month: "February", amount: total_amount_2 } : item
         )
-        : [...prev, { month: "Feb", amount: total_amount_2 }]
+        : [...prev, { month: "February", amount: total_amount_2 }]
     );
 
     const filteredUsers_march = StaffTotalRevenueGet_response.filter(
@@ -139,11 +147,11 @@ function Staff_Panel() {
     );
     const total_amount_07 = filteredUsers_Jully.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Jully")
+      prev.some(item => item.month === "July")
         ? prev.map(item =>
-          item.month === "Jully" ? { month: "Jully", amount: total_amount_07 } : item
+          item.month === "July" ? { month: "July", amount: total_amount_07 } : item
         )
-        : [...prev, { month: "Jully", amount: total_amount_07 }]
+        : [...prev, { month: "July", amount: total_amount_07 }]
     );
 
 
@@ -154,11 +162,11 @@ function Staff_Panel() {
     );
     const total_amount_08 = filteredUsers_Aug.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Aug")
+      prev.some(item => item.month === "August")
         ? prev.map(item =>
-          item.month === "Aug" ? { month: "Aug", amount: total_amount_08 } : item
+          item.month === "August" ? { month: "August", amount: total_amount_08 } : item
         )
-        : [...prev, { month: "Aug", amount: total_amount_08 }]
+        : [...prev, { month: "August", amount: total_amount_08 }]
     );
 
 
@@ -167,11 +175,11 @@ function Staff_Panel() {
     );
     const total_amount_09 = filteredUsers_Sept.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Sept")
+      prev.some(item => item.month === "September")
         ? prev.map(item =>
-          item.month === "Sept" ? { month: "Sept", amount: total_amount_09 } : item
+          item.month === "September" ? { month: "September", amount: total_amount_09 } : item
         )
-        : [...prev, { month: "Sept", amount: total_amount_09 }]
+        : [...prev, { month: "September", amount: total_amount_09 }]
     );
 
 
@@ -180,11 +188,11 @@ function Staff_Panel() {
     );
     const total_amount_10 = filteredUsers_Oct.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Oct")
+      prev.some(item => item.month === "October")
         ? prev.map(item =>
-          item.month === "Oct" ? { month: "Oct", amount: total_amount_10 } : item
+          item.month === "October" ? { month: "October", amount: total_amount_10 } : item
         )
-        : [...prev, { month: "Oct", amount: total_amount_10 }]
+        : [...prev, { month: "October", amount: total_amount_10 }]
     );
 
     const filteredUsers_Nov = StaffTotalRevenueGet_response.filter(
@@ -192,11 +200,11 @@ function Staff_Panel() {
     );
     const total_amount_11 = filteredUsers_Nov.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Nov")
+      prev.some(item => item.month === "November")
         ? prev.map(item =>
-          item.month === "Nov" ? { month: "Nov", amount: total_amount_11 } : item
+          item.month === "November" ? { month: "November", amount: total_amount_11 } : item
         )
-        : [...prev, { month: "Nov", amount: total_amount_11 }]
+        : [...prev, { month: "November", amount: total_amount_11 }]
     );
 
     const filteredUsers_Dec = StaffTotalRevenueGet_response.filter(
@@ -204,21 +212,22 @@ function Staff_Panel() {
     );
     const total_amount_12 = filteredUsers_Dec.map(i => i.staff_amount).reduce((total, current) => total + current, 0);
     setCMonth_revenue(prev =>
-      prev.some(item => item.month === "Dec")
+      prev.some(item => item.month === "December")
         ? prev.map(item =>
-          item.month === "Dec" ? { month: "Dec", amount: total_amount_12 } : item
+          item.month === "December" ? { month: "December", amount: total_amount_12 } : item
         )
-        : [...prev, { month: "Dec", amount: total_amount_12 }]
+        : [...prev, { month: "December", amount: total_amount_12 }]
     );
 
   }
 
   const todayMonth = new Date().toLocaleString('en-US', { month: 'long' });
-  // console.log(todayMonth,'******** todayMonth ******')
+  console.log(todayMonth, '******** todayMonth ******')
   const current_month = cmonth_revenue.filter(i => i.month === todayMonth)
-  // console.log(current_month, '****** todayMonth ******')
+  console.log(current_month, '****** todayMonth ******')
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 
@@ -295,7 +304,7 @@ function Staff_Panel() {
 
       <div className="main-content1">
         <div className="profile-section11">
-          <div className="profile-card" style={{margin: '0'}}>
+          <div className="profile-card" style={{ margin: '0' }}>
             <div className="profile-pic-container">
               {staff.length > 0 && staff[0].pic ? (
                 <img className="profile-pic" src={`${baseurl}${staff[0].pic}`} alt="Staff" />
@@ -340,7 +349,7 @@ function Staff_Panel() {
             <p className="stat-label">Revenue ({current_month[0]?.month || "Current Month"})</p>
           </div>
 
-          {pop === null ? (
+          {/* {pop === null && (
             <div className="stat-card clickable-card" onClick={() => setPop('pop')}>
               <GrTransaction className="stat-icon large-icon" />
               <p className="stat-label">View Transactions Graph</p>
@@ -350,7 +359,7 @@ function Staff_Panel() {
               <VscGraph className="stat-icon large-icon" />
               <p className="stat-label">View Revenue Chart</p>
             </div>
-          )}
+          )} */}
         </div>
 
         {pop === null && cmonth_revenue.length > 0 && (
@@ -395,14 +404,3 @@ function Staff_Panel() {
 }
 
 export default Staff_Panel
-
-
-// import React from 'react'
-
-// function Staff_Panel() {
-//   return (
-//     <div>Staff_Panel</div>
-//   )
-// }
-
-// export default Staff_Panel

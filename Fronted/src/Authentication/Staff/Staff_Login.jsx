@@ -14,6 +14,8 @@ function Staff_Login() {
       localStorage.setItem("refresh_token", response.token.refresh);
       localStorage.setItem("role", response.role);
       localStorage.setItem("user_id", response.user_id);
+      localStorage.setItem("ref", response.refer);
+
       message.success("success");
       Navigate("/Staff_Panel");
     } else {

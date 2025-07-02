@@ -67,6 +67,5 @@ urlpatterns = [
     # path('Uuid/<str:pk>', UuidView.as_view(), name='Uuid'),
     
     path('subscribe/', SubscriberView.as_view(), name='subscribe'),
-    
 
 ] 

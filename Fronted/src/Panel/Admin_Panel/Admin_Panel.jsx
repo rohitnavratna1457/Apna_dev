@@ -18,7 +18,14 @@ const getMonthName = (monthNumber) => {
 
 function Admin_Panel() {
     const admin_id = localStorage.getItem('user_id');
+    const admin_role = localStorage.getItem('role')
     const Navigate = useNavigate();
+
+    const permission =()=>{
+        if(admin_role === null || admin_role !='admin'){
+          Navigate('/')
+        }
+    }
 
     // const [pop, setPop] = useState(null); // Not used in the current JSX
 
@@ -91,6 +98,7 @@ function Admin_Panel() {
 
     useEffect(() => {
         fetchData();
+        permission();
     }, [admin_id]); // Re-fetch if admin_id changes (though unlikely from localStorage)
 
     const log_out = () => {

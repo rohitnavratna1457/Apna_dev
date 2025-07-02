@@ -25,6 +25,14 @@ function User_Withdrawal_User() {
 
   console.log(data, "******* data *******");
 
+  const user_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (user_role === null || user_role != 'user') {
+      Navigate('/')
+    }
+  }
+
   const get = async () => {
     const response = await UserGet();
     const staff_filter = response.filter((i) => i.id === int_id);
@@ -32,7 +40,7 @@ function User_Withdrawal_User() {
     const staff_filter1 = response1.filter((i) => i.User_id === int_id);
     console.log(staff_filter1, "****** response1 *******");
 
-    const combine = {...staff_filter[0],...staff_filter1[0]}
+    const combine = { ...staff_filter[0], ...staff_filter1[0] }
     console.log(combine, "****** combine *******");
     setData([combine]);
 
@@ -44,6 +52,7 @@ function User_Withdrawal_User() {
   };
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 
@@ -76,9 +85,9 @@ function User_Withdrawal_User() {
       const Transaction_data = {
         user_id: id,
         amount: balance,
-        upi_id:upi_id,
-        contact:contact,
-        bank_account : bank_account,
+        upi_id: upi_id,
+        contact: contact,
+        bank_account: bank_account,
         type: "withdrawal",
       };
       await UserTransactionsPost(Transaction_data);

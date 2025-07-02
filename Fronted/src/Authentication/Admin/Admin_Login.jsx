@@ -12,13 +12,14 @@ function Admin_login() {
   const handleSubmit = async (values) => {
     try {
       const response = await UserLogin(values);
+      console.log(response,'******* response ********')
 
       if (response?.token?.access) {
         localStorage.setItem("access_token", response.token.access);
         localStorage.setItem("refresh_token", response.token.refresh);
         localStorage.setItem("role", response.role);
         localStorage.setItem("user_id", response.user_id);
-        localStorage.setItem("ref", response.ref);
+        localStorage.setItem("ref", response.refer);
 
         message.success("Login Successful");
         Navigate("/Admin_Panel"); // Or your desired admin route

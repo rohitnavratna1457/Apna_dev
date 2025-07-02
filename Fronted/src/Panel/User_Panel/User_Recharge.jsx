@@ -22,6 +22,15 @@ const User_Recharge = () => {
 
   const [user, setUser] = useState(null);
   const user_id = localStorage.getItem("user_id");
+
+  const user_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (user_role === null || user_role != 'user') {
+      navigate('/')
+    }
+  }
+
   const plans = [
     {
       title: "Silver",
@@ -108,6 +117,7 @@ const User_Recharge = () => {
   };
 
   useEffect(() => {
+    permission()
     fetchUser();
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";

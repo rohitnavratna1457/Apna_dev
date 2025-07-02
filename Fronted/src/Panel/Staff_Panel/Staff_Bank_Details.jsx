@@ -9,6 +9,14 @@ function User_Bank_Details() {
     const id = localStorage.getItem('user_id')
     const [form] = Form.useForm();
 
+    const staff_role = localStorage.getItem('role')
+
+    const permission = () => {
+        if (staff_role === null || staff_role != 'staff') {
+            Navigate('/')
+        }
+    }
+
     const get = async () => {
         try {
             const response = await UserDataGet();
@@ -25,6 +33,7 @@ function User_Bank_Details() {
     }
 
     useEffect(() => {
+        permission()
         get();
     }, [])
 

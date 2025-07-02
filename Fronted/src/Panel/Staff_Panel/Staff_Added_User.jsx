@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { Form, Input, Button, Table, Select, message } from "antd";
 import {
@@ -10,12 +10,19 @@ import {
   UserRemove,
 } from "../../Api/CoreApi"; // Make sure path is correct
 import User_Reg from "../../Authentication/User/User_Reg"; // Make sure path is correct
-import "./Staff_Added_User.css"; // Import the CSS file
+import './Staff_Added_User.css'; // Import the CSS file
 
 const { Option } = Select;
 
 function Staff_Added_User() {
   const Navigate = useNavigate();
+  const staff_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (staff_role === null || staff_role != 'staff') {
+      Navigate('/')
+    }
+  }
   const [updateUserForm] = Form.useForm(); // Form instance for update form
 
   const [user, setuser] = useState([]);
@@ -28,31 +35,27 @@ function Staff_Added_User() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile sidebar
 
   // This 'id' is for the currently logged-in *staff* member
-  const staffId = localStorage.getItem("user_id"); // Renamed for clarity
+  const staffId = localStorage.getItem('user_id'); // Renamed for clarity
 
   const get = async () => {
     if (!staffId) {
       message.error("Staff ID not found. Please log in.");
-      Navigate("/Staff_Login"); // Or appropriate login page
+      Navigate('/Staff_Login'); // Or appropriate login page
       return;
     }
     try {
       const allUsersAndStaff = await UserGet(); // Assuming UserGet fetches all users/staff
-      const currentStaffMember = allUsersAndStaff.find((i) => i.id === staffId); // Find current staff
+      const currentStaffMember = allUsersAndStaff.find(i => i.id === staffId); // Find current staff
 
       if (currentStaffMember) {
         setStaff([currentStaffMember]); // Set staff (expecting an array for map in original code)
         // Assuming currentStaffMember has a 'refer' property to link to users they manage
         if (currentStaffMember.refer) {
-          const managedUsers = allUsersAndStaff.filter(
-            (i) => i.ref === currentStaffMember.refer
-          );
+          const managedUsers = allUsersAndStaff.filter(i => i.ref === currentStaffMember.refer);
           setuser(managedUsers);
         } else {
           setuser([]); // No referral code, so no users under this staff
-          console.warn(
-            "Current staff member does not have a 'refer' property."
-          );
+          console.warn("Current staff member does not have a 'refer' property.");
         }
       } else {
         message.error("Staff member not found.");
@@ -66,6 +69,7 @@ function Staff_Added_User() {
   };
 
   useEffect(() => {
+    permission()
     get();
   }, [staffId]); // Re-fetch if staffId changes (though it's from localStorage)
 
@@ -90,9 +94,7 @@ function Staff_Added_User() {
   const handleUserRegSubmit = async () => {
     // This function would be passed to User_Reg if it needs a callback
     // after its internal submission is complete.
-    message.success(
-      "User registration successful (from User_Reg component). Refreshing list."
-    );
+    message.success("User registration successful (from User_Reg component). Refreshing list.");
     setuser_form(null); // Close the form view
     get(); // Refresh the user list
   };
@@ -106,11 +108,11 @@ function Staff_Added_User() {
     try {
       const userIdToUpdate = values.id; // ID comes from the form values (set by setFieldsValue)
       await UserUpdate(userIdToUpdate, values); // API should handle response
-      message.success("User updated successfully");
+      message.success('User updated successfully');
       setuser_form(null);
       get(); // Re-fetch users
     } catch (error) {
-      message.error("Failed to update user");
+      message.error('Failed to update user');
       console.error("Error in updateuser():", error);
     }
   };
@@ -118,19 +120,19 @@ function Staff_Added_User() {
   const delete_user = async (record) => {
     try {
       await UserRemove(record.id); // API should handle response
-      message.success("User deleted successfully");
+      message.success('User deleted successfully');
       // Optimistically update UI or re-fetch
-      setuser((prevUsers) => prevUsers.filter((u) => u.id !== record.id));
+      setuser(prevUsers => prevUsers.filter(u => u.id !== record.id));
       // Or call get(); if UserRemove doesn't return the updated list
     } catch (error) {
-      message.error("Failed to delete user");
+      message.error('Failed to delete user');
       console.error("Error in delete_user():", error);
     }
   };
 
   const log_out = () => {
-    localStorage.removeItem("user_id");
-    Navigate("/Staff_Login"); // Ensure this route is correct
+    localStorage.removeItem('user_id');
+    Navigate('/Staff_Login'); // Ensure this route is correct
   };
 
   const toggleSidebar = () => {
@@ -138,30 +140,23 @@ function Staff_Added_User() {
   };
 
   const columns = [
-    {
-      title: "ID",
-      key: "id",
-      render: (text, record, index) => index + 1,
-      width: 130,
-    },
+    { title: "ID", dataIndex: "id", key: "id", fixed: 'left', width: 80 },
     { title: "Username", dataIndex: "username", key: "username", width: 150 },
-    {
-      title: "Password",
-      dataIndex: "password",
-      key: "password",
-      width: 150,
-      render: () => "******",
-    },
+    { title: "Password", dataIndex: "password", key: "password", width: 150, render: () => '******' },
     { title: "Balance", dataIndex: "balance", key: "balance", width: 100 },
     { title: "District", dataIndex: "disttrict", key: "disttrict", width: 120 },
     {
       title: "Actions",
       key: "actions",
-      fixed: "right",
+      fixed: 'right',
       width: 180, // Adjusted width
       render: (_, record) => (
         <div className="action-buttons">
-          <Button type="primary" ghost onClick={() => update_pass(record)}>
+          <Button
+            type="primary"
+            ghost
+            onClick={() => update_pass(record)}
+          >
             Update
           </Button>
           <Button danger onClick={() => delete_user(record)}>
@@ -175,22 +170,20 @@ function Staff_Added_User() {
   return (
     <div className="staff-layout-container">
       <div className="app-header">
-        <Link to="/Home_Page_wLog" className="header-logo-link">
+        <Link to='/Home_Page_wLog' className="header-logo-link">
           <p className="header-logo-text">Ristey</p>
         </Link>
-        <div className="header-nav-wrapper">
-          {" "}
-          {/* Wrapper for nav items */}
+        <div className="header-nav-wrapper"> {/* Wrapper for nav items */}
           {staffId ? (
-            <Link to="/Staff_Panel" className="header-nav-link profile-link">
+            <Link to='/Staff_Panel' className="header-nav-link profile-link">
               <p>Profile</p>
             </Link>
           ) : (
             <div className="header-auth-links">
-              <Link to="/User_Reg/885695" className="header-nav-link">
+              <Link to='/User_Reg/885695' className="header-nav-link">
                 <p>Sign Up</p>
               </Link>
-              <Link to="/User_Login" className="header-nav-link">
+              <Link to='/User_Login' className="header-nav-link">
                 <p>Login</p>
               </Link>
             </div>
@@ -201,17 +194,17 @@ function Staff_Added_User() {
         </Button>
       </div>
 
-      <div className={`app-sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <Link to="/Staff_Panel">
+      <div className={`app-sidebar ${isSidebarOpen ? 'open' : ''}`}>
+        <Link to='/Staff_Panel'>
           <Button className="sidebar-btn">Dashboard</Button>
         </Link>
-        <Link to="/Staff_Added_User">
+        <Link to='/Staff_Added_User'>
           <Button className="sidebar-btn active">User</Button>
         </Link>
-        <Link to="/Staff_Transactions">
+        <Link to='/Staff_Transactions'>
           <Button className="sidebar-btn">Transaction</Button>
         </Link>
-        <Link to="/Staff_Withdrawals">
+        <Link to='/Staff_Withdrawals'>
           <Button className="sidebar-btn">Withdrawal</Button>
         </Link>
         <Button className="sidebar-btn" onClick={log_out}>
@@ -222,12 +215,17 @@ function Staff_Added_User() {
       <div className="main-content staff-added-user-content">
         <div className="content-actions">
           {user_form === null && (
-            <Button type="primary" onClick={() => setuser_form("add")}>
+            <Button
+              type="primary"
+              onClick={() => setuser_form("add")}
+            >
               Add User
             </Button>
           )}
           {(user_form === "add" || user_form === "update_button") && (
-            <Button onClick={() => setuser_form(null)}>Cancel</Button>
+            <Button onClick={() => setuser_form(null)}>
+              Cancel
+            </Button>
           )}
         </div>
 
@@ -236,10 +234,7 @@ function Staff_Added_User() {
             <h2>Add New User</h2>
             {/* User_Reg component handles its own form and submission.
                 Pass a callback if this parent component needs to react to submission. */}
-            <User_Reg
-              onSuccessfulSubmit={handleUserRegSubmit}
-              staffReferralCode={staff[0]?.refer}
-            />
+            <User_Reg onSuccessfulSubmit={handleUserRegSubmit} staffReferralCode={staff[0]?.refer} />
           </div>
         )}
 
@@ -256,37 +251,20 @@ function Staff_Added_User() {
               <Form.Item label="ID" name="id" rules={[{ required: true }]}>
                 <Input readOnly />
               </Form.Item>
-              <Form.Item
-                label="Username"
-                name="username"
-                rules={[{ required: true }]}
-              >
+              <Form.Item label="Username" name="username" rules={[{ required: true }]}>
                 <Input placeholder="Username" />
               </Form.Item>
               <Form.Item label="Password" name="password">
-                <Input
-                  placeholder="Enter new password (optional)"
-                  type="password"
-                />
+                <Input placeholder="Enter new password (optional)" type="password" />
               </Form.Item>
-              <Form.Item
-                label="Balance"
-                name="balance"
-                rules={[
-                  { type: "number", transform: (value) => Number(value) },
-                ]}
-              >
+              <Form.Item label="Balance" name="balance" rules={[{ type: 'number', transform: value => Number(value) }]}>
                 <Input type="number" placeholder="Balance" />
               </Form.Item>
               <Form.Item label="District" name="disttrict">
                 <Input placeholder="District" />
               </Form.Item>
               <Form.Item className="submit-update-btn-item">
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="submit-update-btn"
-                >
+                <Button type="primary" htmlType="submit" className="submit-update-btn">
                   Update User
                 </Button>
               </Form.Item>
@@ -301,7 +279,7 @@ function Staff_Added_User() {
             dataSource={user}
             rowKey="id"
             bordered
-            scroll={{ x: "max-content" }}
+            scroll={{ x: 'max-content' }}
             className="user-data-table"
           />
         </div>

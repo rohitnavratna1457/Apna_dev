@@ -12,6 +12,14 @@ function Transaction() {
     const Navigate = useNavigate();
     const location = useLocation();
 
+    const admin_role = localStorage.getItem('role')
+
+    const permission = () => {
+        if (admin_role === null || admin_role != 'admin') {
+            Navigate('/')
+        }
+    }
+
     const [pop, setPop] = useState('staff');
     const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for sidebar toggle
 
@@ -23,6 +31,7 @@ function Transaction() {
     // Close sidebar when a navigation link is clicked (useful on mobile)
     // or when route changes
     useEffect(() => {
+        permission()
         if (isSidebarOpen && window.innerWidth < 769) { // 769 to match CSS breakpoint
             setIsSidebarOpen(false);
         }

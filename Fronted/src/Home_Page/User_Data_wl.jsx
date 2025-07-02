@@ -67,7 +67,6 @@ function User_data() {
   };
   return (
     <div>
-      
       <div className="header">
         <Link to="/Home_Page_wLog">
           <p className="header-title">Ristey</p>
@@ -80,12 +79,11 @@ function User_data() {
         ) : (
           <div className="header-auth-links">
             <Link to="/User_Login">
-              <p className="header-auth-link-signup">Login</p>
+              <p className="header-auth-link-signup">Login </p>
             </Link>
           </div>
         )}
       </div>
-
       <div className="content-padding">
         {data.map((i) => (
           <Card className="user-card" key={i.User_id}>
@@ -266,6 +264,8 @@ function User_data() {
                   )}
                 </div>
               )}
+
+             
 
               {activeTab === "profile" && (
                 <div className="profile-details-grid">

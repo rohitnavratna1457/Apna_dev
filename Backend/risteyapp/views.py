@@ -988,7 +988,6 @@ class UserImagesView_wl(APIView):
 class UserRegisterView(APIView):
     authentication_classes = [JWTAuthentication]  # ✅ Check Token
     permission_classes = [IsAuthenticated]
-
     def get(self, request, pk=None):
         # if request.user.role in ['admin', 'staff', 'user', 'developer']:
         if request.user.role in ['admin', 'staff', 'user', 'developer']:  # ✅ Only admin can access

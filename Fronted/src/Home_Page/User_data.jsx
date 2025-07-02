@@ -5,7 +5,7 @@
 import { IoSend } from "react-icons/io5";
 import { IoCall } from "react-icons/io5";
 import { formatDistanceToNow, parse } from "date-fns";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   UserGet,
   UserUpdate,
@@ -22,7 +22,7 @@ import {
 import { formatDistanceToNow as timeAgo } from "date-fns";
 // import "../Home_Page/Home_Page.css";
 
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Card, Image, message, Button } from "antd";
 import {
   FaFacebook,
@@ -37,11 +37,20 @@ import "../Home_Page/User_Data.css";
 function User_data() {
   const id_param = useParams();
   const int_id = String(id_param.id);
+  const Navigate = useNavigate()
 
   const ref_id = localStorage.getItem("ref");
 
   const id = localStorage.getItem("user_id");
   const baseurl = "http://127.0.0.1:8000/";
+
+  // const admin_role = localStorage.getItem('role')
+
+  // const permission = () => {
+  //   if (admin_role === null || admin_role != 'user' || admin_role != 'admin' || admin_role != 'staff') {
+  //     Navigate('/')
+  //   }
+  // }
 
   const [User, setUser] = useState([]); // current user
   const [alluser, setAlluser] = useState([]); // all user
@@ -102,11 +111,13 @@ function User_data() {
   };
 
   useEffect(() => {
+    // permission()
     user_get();
-  }, [reload]);
+  }, []);
 
   const alert_popup = (i) => {
     if (window.confirm("Are you sure?")) {
+      user_get();
       distribute(i);
     }
   };
@@ -275,6 +286,7 @@ function User_data() {
           // dev_id: developer_id,
         });
         delete value.pic;
+        delete value.cover_img;
 
         const response5 = await UserData_Array_Update(data_id, value);
         setData(response5);
@@ -351,6 +363,7 @@ function User_data() {
           // admin_id: admin_id,
         });
         delete value.pic;
+        delete value.cover_img;
 
         const response8 = await UserData_Array_Update(data_id, value);
         console.log(
@@ -429,6 +442,7 @@ function User_data() {
           // user_id: alluser_id,
         });
         delete value.pic;
+        delete value.cover_img;
 
         const response10 = await UserData_Array_Update(data_id, value);
         setData(response10);
@@ -458,7 +472,8 @@ function User_data() {
       // setReload(1);
     } else {
       message.error("need to aad balance");
-      setReload(1);
+      Navigate('/User_Recharge')
+      // setReload(1);
     }
   };
 

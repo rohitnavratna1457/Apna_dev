@@ -3,7 +3,7 @@ import { Button, Card, message, Pagination } from "antd";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoSend } from "react-icons/io5";
 import { IoCall } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home_Page_Log.css";
 
 import {
@@ -23,8 +23,16 @@ import { PiStudentFill } from "react-icons/pi";
 import { MdOutlineWork } from "react-icons/md";
 
 function Home_Page_Log() {
+  const Navigate = useNavigate()
   const id = localStorage.getItem("user_id");
   const baseurl = "http://127.0.0.1:8000/";
+  // const admin_role = localStorage.getItem('role')
+
+  // const permission = () => {
+  //   if (admin_role === null || admin_role != 'user' || admin_role != 'admin' || admin_role != 'staff') {
+  //     Navigate('/')
+  //   }
+  // }
 
   const [user, setUser] = useState([]); // current user
   const [alluser, setAlluser] = useState([]); // all user
@@ -93,11 +101,13 @@ function Home_Page_Log() {
   };
 
   useEffect(() => {
+    // permission()
     user_get();
-  }, [reload]);
+  }, []);
 
   const alert_popup = (i) => {
     if (window.confirm("Are you sure?")) {
+      user_get();
       distribute(i);
     }
   };
@@ -266,6 +276,8 @@ function Home_Page_Log() {
           // dev_id: developer_id,
         });
         delete value.pic;
+        delete value.cover_img;
+
 
         const response5 = await UserData_Array_Update(data_id, value);
         setData(response5);
@@ -342,6 +354,7 @@ function Home_Page_Log() {
           // admin_id: admin_id,
         });
         delete value.pic;
+        delete value.cover_img;
 
         const response8 = await UserData_Array_Update(data_id, value);
         console.log(
@@ -382,7 +395,7 @@ function Home_Page_Log() {
           "****** (5,3) Admintotal revenue okkkkkkk *******"
         );
       }
-
+      //////////////////////// User /////////////////////////////////
       const filter_user = alluser.filter(
         (i) => i.refer === value.ref && i.role === "user"
       );
@@ -420,6 +433,7 @@ function Home_Page_Log() {
           // user_id: alluser_id,
         });
         delete value.pic;
+        delete value.cover_img;
 
         const response10 = await UserData_Array_Update(data_id, value);
         setData(response10);
@@ -449,7 +463,9 @@ function Home_Page_Log() {
       // setReload(1);
     } else {
       message.error("need to aad balance");
-      setReload(1);
+      Navigate('/User_Recharge')
+
+      // setReload(1);
     }
   };
 
@@ -646,7 +662,7 @@ function Home_Page_Log() {
                     }}
                   >
                     <p style={{ margin: 0, fontSize: "24px", color: "#222" }}>
-                      {i.firstname}  
+                      {i.firstname}
                     </p>
                     <p style={{ margin: 0, fontSize: "16px", color: "#555" }}>
                       Age: {i.age}
@@ -709,8 +725,8 @@ function Home_Page_Log() {
                     >
                       {i.create_date && !isNaN(new Date(i.create_date))
                         ? timeAgo(new Date(i.create_date), {
-                            addSuffix: true,
-                          }).replace("about ", "")
+                          addSuffix: true,
+                        }).replace("about ", "")
                         : "Invalid date"}
                     </p>
                   </div>

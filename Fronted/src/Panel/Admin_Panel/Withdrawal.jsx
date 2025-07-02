@@ -15,6 +15,14 @@ function Withdrawal() {
     const [pop, setPop] = useState('staff');
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+    const admin_role = localStorage.getItem('role')
+
+    const permission = () => {
+        if (admin_role === null || admin_role != 'admin') {
+            navigate('/')
+        }
+    }
+
     // Function to toggle sidebar
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -29,6 +37,7 @@ function Withdrawal() {
 
     // Close sidebar on window resize
     useEffect(() => {
+        permission()
         const handleResize = () => {
             if (window.innerWidth > 768) {
                 setIsSidebarOpen(false);

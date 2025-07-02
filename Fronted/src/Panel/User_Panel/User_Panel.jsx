@@ -50,6 +50,14 @@ function User_Panel() {
 
   console.log(pop, "***** pop *****");
 
+  const user_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (user_role === null || user_role != 'user') {
+      Navigate('/')
+    }
+  }
+
   const get = async () => {
     const user_response = await UserDataGet();
     const filter_current_user = user_response.filter(
@@ -91,10 +99,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Jan")
         ? prev.map((item) =>
-            item.month === "Jan"
-              ? { month: "Jan", amount: total_amount_1 }
-              : item
-          )
+          item.month === "Jan"
+            ? { month: "Jan", amount: total_amount_1 }
+            : item
+        )
         : [...prev, { month: "Jan", amount: total_amount_1 }]
     );
 
@@ -107,10 +115,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Feb")
         ? prev.map((item) =>
-            item.month === "Feb"
-              ? { month: "Feb", amount: total_amount_2 }
-              : item
-          )
+          item.month === "Feb"
+            ? { month: "Feb", amount: total_amount_2 }
+            : item
+        )
         : [...prev, { month: "Feb", amount: total_amount_2 }]
     );
 
@@ -124,10 +132,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "March")
         ? prev.map((item) =>
-            item.month === "March"
-              ? { month: "March", amount: total_amount_March }
-              : item
-          )
+          item.month === "March"
+            ? { month: "March", amount: total_amount_March }
+            : item
+        )
         : [...prev, { month: "March", amount: total_amount_March }]
     );
 
@@ -141,10 +149,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "April")
         ? prev.map((item) =>
-            item.month === "April"
-              ? { month: "April", amount: total_amount_april }
-              : item
-          )
+          item.month === "April"
+            ? { month: "April", amount: total_amount_april }
+            : item
+        )
         : [...prev, { month: "April", amount: total_amount_april }]
     );
 
@@ -158,8 +166,8 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "May")
         ? prev.map((item) =>
-            item.month === "May" ? { month: "May", amount: total_amount } : item
-          )
+          item.month === "May" ? { month: "May", amount: total_amount } : item
+        )
         : [...prev, { month: "May", amount: total_amount }]
     );
 
@@ -172,10 +180,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Jun")
         ? prev.map((item) =>
-            item.month === "Jun"
-              ? { month: "Jun", amount: total_amount_06 }
-              : item
-          )
+          item.month === "Jun"
+            ? { month: "Jun", amount: total_amount_06 }
+            : item
+        )
         : [...prev, { month: "Jun", amount: total_amount_06 }]
     );
 
@@ -188,10 +196,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Jully")
         ? prev.map((item) =>
-            item.month === "Jully"
-              ? { month: "Jully", amount: total_amount_07 }
-              : item
-          )
+          item.month === "Jully"
+            ? { month: "Jully", amount: total_amount_07 }
+            : item
+        )
         : [...prev, { month: "Jully", amount: total_amount_07 }]
     );
 
@@ -204,10 +212,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Aug")
         ? prev.map((item) =>
-            item.month === "Aug"
-              ? { month: "Aug", amount: total_amount_08 }
-              : item
-          )
+          item.month === "Aug"
+            ? { month: "Aug", amount: total_amount_08 }
+            : item
+        )
         : [...prev, { month: "Aug", amount: total_amount_08 }]
     );
 
@@ -220,10 +228,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Sept")
         ? prev.map((item) =>
-            item.month === "Sept"
-              ? { month: "Sept", amount: total_amount_09 }
-              : item
-          )
+          item.month === "Sept"
+            ? { month: "Sept", amount: total_amount_09 }
+            : item
+        )
         : [...prev, { month: "Sept", amount: total_amount_09 }]
     );
 
@@ -236,10 +244,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Oct")
         ? prev.map((item) =>
-            item.month === "Oct"
-              ? { month: "Oct", amount: total_amount_10 }
-              : item
-          )
+          item.month === "Oct"
+            ? { month: "Oct", amount: total_amount_10 }
+            : item
+        )
         : [...prev, { month: "Oct", amount: total_amount_10 }]
     );
 
@@ -252,10 +260,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Nov")
         ? prev.map((item) =>
-            item.month === "Nov"
-              ? { month: "Nov", amount: total_amount_11 }
-              : item
-          )
+          item.month === "Nov"
+            ? { month: "Nov", amount: total_amount_11 }
+            : item
+        )
         : [...prev, { month: "Nov", amount: total_amount_11 }]
     );
 
@@ -268,10 +276,10 @@ function User_Panel() {
     setCMonth_revenue((prev) =>
       prev.some((item) => item.month === "Dec")
         ? prev.map((item) =>
-            item.month === "Dec"
-              ? { month: "Dec", amount: total_amount_12 }
-              : item
-          )
+          item.month === "Dec"
+            ? { month: "Dec", amount: total_amount_12 }
+            : item
+        )
         : [...prev, { month: "Dec", amount: total_amount_12 }]
     );
   };
@@ -282,6 +290,7 @@ function User_Panel() {
   console.log(current_month, "****** todayMonth ******");
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 

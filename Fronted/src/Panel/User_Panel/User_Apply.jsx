@@ -140,14 +140,22 @@ import React, { useEffect, useState } from "react";
 import { UserDataGet } from "../../Api/CoreApi";
 import { Table } from "antd";
 import { FaArrowAltCircleUp, FaArrowAltCircleDown } from "react-icons/fa";
-
 import "../User_Panel/User_Apply.css"; // We'll move the styles here for cleaner code
-
+import { useNavigate } from "react-router-dom";
 function User_Apply() {
+  const Navigate = useNavigate()
   const id = localStorage.getItem("user_id");
   const [user_applyout, setUser_Applyout] = useState([]);
   const [user_applyin, setUser_Applyin] = useState([]);
   const [pop, setPop] = useState(0);
+
+  const user_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (user_role === null || user_role != 'user') {
+      Navigate('/')
+    }
+  }
 
   // const get = async () => {
   //     const response = await UserDataGet();
@@ -197,6 +205,7 @@ function User_Apply() {
   };
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 

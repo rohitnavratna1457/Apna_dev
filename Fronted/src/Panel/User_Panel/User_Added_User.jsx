@@ -220,6 +220,13 @@ function User_Added_User() {
 
   const userId = localStorage.getItem("user_id");
   const isLoggedIn = !!userId;
+  const user_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (user_role === null || user_role != 'user') {
+      navigate('/')
+    }
+  }
 
   const get = async () => {
     try {
@@ -237,6 +244,7 @@ function User_Added_User() {
   };
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 

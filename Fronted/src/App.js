@@ -68,24 +68,24 @@ function App() {
           <Route path="/Admin_Login" element={<Admin_Login />} />
           <Route path="/Staff_Reg" element={<Staff_Reg />} />
           <Route path="/Staff_Login" element={<Staff_Login />} />
-          <Route path="/:id" element={<Staff_Refer />} />
+          {/* <Route path="/:id" element={<Staff_Refer />} /> */}
           <Route path="/User_Reg" element={<User_Reg />} />
           <Route path="/User_Reg/:id" element={<User_Reg />} />
           <Route path="/User_Login" element={<User_Login />} />
-          <Route path="/" element={<Home_Page_WLog />} />
+          {/* <Route path="/" element={<Home_Page_WLog />} /> */}
           <Route path="/User_Data_wl/:id" element={<User_Data_wl />} />
-
+{/* 
           {(role === "admin" || role === "staff" || role === "user") && (
-            <>
+            <> */}
               <Route path="/Home_Page_Log" element={<Home_Page_Log />} />
               <Route path="/User_data/:id" element={<User_data />} />
               <Route path="/User_Profile" element={<User_Profile />} />
               <Route path="/User_Profile/:id" element={<User_Profile />} />
-            </>
-          )}
+            {/* </>
+          )} */}
 
-          {role == "admin" && (
-            <>
+          {/* {role == "admin" && (
+            <> */}
               <Route path="/Admin_Panel" element={<Admin_Panel />} />
               <Route path="/Staff_Tables" element={<Staff_Tables />} />
               <Route path="/Staff_Charts/:id" element={<Staff_Charts />} />
@@ -101,10 +101,10 @@ function App() {
               <Route path="/Transaction" element={<Transaction />} />
               <Route path="/Withdrawal" element={<Withdrawal />} />
               <Route path="/Post_Commission" element={<Post_Commission />} />
-            </>
-          )}
-          {role == "staff" && (
-            <>
+            {/* </>
+          )} */}
+          {/* {role == "staff" && (
+            <> */}
               <Route path="/Staff_Panel" element={<Staff_Panel />} />
               <Route
                 path="/Staff_Transactions"
@@ -119,11 +119,11 @@ function App() {
                 path="/Staff_Bank_Details"
                 element={<Staff_Bank_Details />}
               />
-            </>
-          )}
-
+            {/* </>
+          )} */}
+{/* 
           {role == "user" && (
-            <>
+            <> */}
               <Route path="/User_Panel" element={<User_Panel />} />
               <Route path="/User_Added_User" element={<User_Added_User />} />
               <Route
@@ -144,8 +144,8 @@ function App() {
                 path="/User_Bank_Details"
                 element={<User_Bank_Details />}
               />
-            </>
-          )}
+            {/* </>
+          )} */}
 
           <Route path="/Test" element={<Test />} />
 

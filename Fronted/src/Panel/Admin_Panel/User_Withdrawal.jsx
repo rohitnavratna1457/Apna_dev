@@ -16,6 +16,14 @@ function User_Withdrawal() {
   const [add, setAdd] = useState([]);
   console.log(staff, "****** data ********");
 
+  const admin_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (admin_role === null || admin_role != 'admin') {
+      Navigate('/')
+    }
+  }
+
   const get = async () => {
     try {
       const staff_response = await UserGet();
@@ -31,6 +39,7 @@ function User_Withdrawal() {
   };
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 

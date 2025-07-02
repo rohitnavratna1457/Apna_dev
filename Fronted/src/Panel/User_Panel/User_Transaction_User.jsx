@@ -274,6 +274,14 @@ function User_Transaction_User() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile sidebar
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+  const user_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (user_role === null || user_role != 'user') {
+      navigate('/')
+    }
+  }
+
   const getTransactions = async () => {
     try {
       const response = await UserTransactionsGet();
@@ -287,6 +295,7 @@ function User_Transaction_User() {
   };
 
   useEffect(() => {
+    permission()
     getTransactions();
   }, []);
 

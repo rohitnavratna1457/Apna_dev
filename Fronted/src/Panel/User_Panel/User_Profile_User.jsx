@@ -65,6 +65,14 @@ function User_Profile_User() {
   const [image, setImage] = useState([]);
   console.log(User, "******* User ********");
 
+  const user_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (user_role === null || user_role != 'user') {
+      Navigate('/')
+    }
+  }
+
   const get_user = async () => {
     const response = await UserGet();
     const filter = response.filter((i) => i.id === int_id);
@@ -104,6 +112,7 @@ function User_Profile_User() {
     setImage(filter);
   };
   useEffect(() => {
+    permission()
     get_user();
     get_user_image();
   }, []);
@@ -284,7 +293,7 @@ function User_Profile_User() {
             </Form>
 
             <h2 className="user-name">
-              {i.firstname} 
+              {i.firstname}
             </h2>
 
             <div className="social-icons">

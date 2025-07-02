@@ -9,6 +9,14 @@ function Post_Commission() {
     const location = useLocation(); // For active sidebar link
     const admin_id = localStorage.getItem('user_id');
 
+    const admin_role = localStorage.getItem('role')
+
+    const permission = () => {
+        if (admin_role === null || admin_role != 'admin') {
+            navigate('/')
+        }
+    }
+
     // charges state is not strictly needed if form directly uses API response for initial values
     // const [charges, setCharges] = useState(null); 
     const [form] = Form.useForm();
@@ -36,6 +44,7 @@ function Post_Commission() {
     };
 
     useEffect(() => {
+        permission()
         if (admin_id) {
             fetchCharges();
         } else {

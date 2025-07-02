@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -22,6 +22,79 @@
 
         <!-- <p style="margin-top: 20px;">If you didn’t request this email, please ignore it.</p> -->
         <p>Thanks,<br><b>Ristey Team</b></p>
+    </div>
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Your Account Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f6fa;
+            padding: 30px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        h2 {
+            color: #0a3d62;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+        table {
+            margin-top: 25px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px 0;
+            font-size: 16px;
+            color: #444;
+        }
+        td:first-child {
+            font-weight: bold;
+            width: 30%;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 15px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hi {{ username }},</h2>
+        <p>Welcome to Ristey! Below are your login credentials:</p>
+
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td>{{ username }}</td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td>{{ password }}</td>
+            </tr>
+        </table>
+
+        <div class="footer">
+            <p>If you did not request this email, please ignore it.</p>
+            <p>Warm regards,<br><strong>The Ristey Team</strong></p>
+        </div>
     </div>
 </body>
 </html>

@@ -17,6 +17,14 @@ function Staff_Tables() {
   const Navigate = useNavigate();
   const location = useLocation(); // Hook to get current URL path
 
+  const admin_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (admin_role === null || admin_role != 'admin') {
+      Navigate('/')
+    }
+  }
+
   const [staff, setStaff] = useState([]);
   const [staff_form, setStaff_form] = useState(null);
   const [updateform, setUpdateform] = useState(null);
@@ -40,6 +48,7 @@ function Staff_Tables() {
   };
 
   useEffect(() => {
+    permission()
     if (admin_id) {
       get();
     } else {

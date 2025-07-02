@@ -7,6 +7,15 @@ import { Form, Input, Button, Table } from "antd";
 
 
 function Staff_Transaction() {
+  const Navigate = useNavigate()
+
+  const admin_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (admin_role === null || admin_role != 'admin') {
+      Navigate('/')
+    }
+  }
 
   const [data, setData] = useState([])
   const get = async () => {
@@ -15,6 +24,7 @@ function Staff_Transaction() {
   }
 
   useEffect(() => {
+    permission()
     get()
   }, [])
 
@@ -24,7 +34,7 @@ function Staff_Transaction() {
   // }
   return (
     <div>
-      
+
       <Table
         columns={[
           { title: "ID", dataIndex: "id", key: "id" },

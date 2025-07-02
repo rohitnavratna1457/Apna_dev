@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { UserDataGetwt, User_StateGet, User_CasteGet } from "../Api/CoreApi";
 import Footer from "../Footer/Footer";
 // import "../Header.css";
-import Header from "../Header/Header"
-import "../Header/Header.css"
+import Header from "../Header/Header";
+import "../Header/Header.css";
 import About from "../About/About";
 
 const { Option } = Select;
@@ -76,13 +76,13 @@ const Home_Page_WLog = () => {
         <div className="hero-content">
           <h1 className="logo11">
             {/* <marquee behavior="alternate" direction="right"> */}
-            Metromonilas
+            Metromonials
             {/* </marquee> */}
           </h1>
           <p className="description1">
             {/* <marquee behavior="scroll" direction="right"> */}
-            With over SWAYAMWARA is great for finding the perfect Life Partner!
-            {/* </marquee> */}
+            "Finding your perfect life partner is now easier with SWAYAMWARA –
+            your trusted matrimonial platform!" {/* </marquee> */}
           </p>
           <Link to="/User_Reg/885695" target="_blank">
             <button className="register-btn">Register Now!</button>

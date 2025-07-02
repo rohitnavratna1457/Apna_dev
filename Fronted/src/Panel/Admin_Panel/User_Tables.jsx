@@ -18,6 +18,14 @@ function User_Tables() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const admin_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (admin_role === null || admin_role != 'admin') {
+      navigate('/')
+    }
+  }
+
   const [users, setUsers] = useState([]);
   const [userFormVisible, setUserFormVisible] = useState(null);
   const [updateFormInitialValues, setUpdateFormInitialValues] = useState(null);
@@ -41,6 +49,7 @@ function User_Tables() {
   };
 
   useEffect(() => {
+    permission()
     if (admin_id) {
       fetchUsers();
     } else {

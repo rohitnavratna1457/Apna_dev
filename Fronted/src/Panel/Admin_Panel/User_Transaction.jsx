@@ -3,9 +3,20 @@ import { useState, useEffect } from 'react';
 import { UserTransactionsGet } from '../../Api/CoreApi';
 // import { useParams, Link } from 'react-router-dom'; // useParams and Link are not used
 import { Table } from "antd"; // Form, Input, Button are not used
+import { useNavigate } from 'react-router-dom';
 // import './User_Transaction.css'; // Import the CSS file
 
 function User_Transaction() {
+
+    const Navigate = useNavigate()
+
+    const admin_role = localStorage.getItem('role')
+
+    const permission = () => {
+        if (admin_role === null || admin_role != 'admin') {
+            Navigate('/')
+        }
+    }
     const [data, setData] = useState([]);
     // console.log(data, '***** v ******'); // Consider removing for production
 
@@ -27,6 +38,7 @@ function User_Transaction() {
     };
 
     useEffect(() => {
+        permission()
         get();
     }, []);
 

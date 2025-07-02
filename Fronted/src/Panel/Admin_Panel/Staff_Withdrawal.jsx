@@ -6,8 +6,17 @@ import {
   StaffTransactionsUpdate,
 } from "../../Api/CoreApi";
 import { Button, Table, message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function Staff_Withdrawal() {
+  const Navigate = useNavigate()
+  const admin_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (admin_role === null || admin_role != 'admin') {
+      Navigate('/')
+    }
+  }
   const [staff, setStaff] = useState([]);
   const [data, setData] = useState([]);
 
@@ -26,6 +35,7 @@ function Staff_Withdrawal() {
   };
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 

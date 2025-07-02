@@ -20,6 +20,13 @@ import { VscGraph } from "react-icons/vsc";
 function Staff_Charts() {
   const admin_id = localStorage.getItem('user_id')
   const Navigate = useNavigate();
+  const admin_role = localStorage.getItem('role')
+
+  const permission = () => {
+    if (admin_role === null || admin_role != 'admin') {
+      Navigate('/')
+    }
+  }
   const [form] = Form.useForm();
   const id = useParams();
   const int_id = (String(id.id))
@@ -383,6 +390,7 @@ function Staff_Charts() {
   console.log(current_month, '**** current_month **')
 
   useEffect(() => {
+    permission()
     get();
   }, []);
 
